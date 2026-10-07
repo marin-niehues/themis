@@ -1,0 +1,8 @@
+{
+  "name": "themis",
+  "version": "0.1.0",
+  "description": "Gemeinsame Schreib- und Arbeitsregeln für Claude Code.",
+  "author": {
+    "name": "Marin Niehues"
+  }
+}
