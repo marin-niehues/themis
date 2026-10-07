@@ -51,6 +51,9 @@ Danach ist nichts mehr da.
 
 ## Für den Betreiber
 
+Die Herleitung der Regeln mit Quellen steht in `docs/katalog.md`.
+
+
 - **Regeln ändern:** `RULES.md` bearbeiten und auf `main` pushen. Gilt ab der nächsten Session aller Nutzer. Kein Versionsbump nötig.
 - **Regeln abschalten:** `RULES.md` leeren oder löschen. Oder das Repo privat halten und einzelnen Personen den Zugriff entziehen.
 - **Plugin selbst ändern:** Version in `themis/.claude-plugin/plugin.json` erhöhen und pushen. Nutzer bekommen das Update über `/plugin marketplace update niehues` oder automatisch, wenn sie Auto-Update für den Marketplace eingeschaltet haben.
