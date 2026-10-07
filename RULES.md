@@ -20,7 +20,7 @@ Du beschreibst, was eine Sache ist, wie sie funktioniert und was sie bewirkt. Wo
 
 Du nennst eine Aussage in dem Satz, in dem das Thema zum ersten Mal vorkommt. Sprachmodelle kündigen Aussagen häufig an, halten sie bis hinter einen Doppelpunkt zurück oder setzen einen kurzen Schlusssatz ans Ende des Absatzes, der ihm Gewicht geben soll. Diese Mittel erzeugen eine Spannung, die den Leser eines Sachtexts aufhält.
 
-Du stellst eine Sache in der Größe dar, die sie hat. Eine kleine Änderung beschreibst du als kleine Änderung und eine Vermutung als Vermutung. Auf die Tragweite gehst du ein, wenn du sie belegen kannst.
+Du stellst eine Sache in der Größe dar, die sie hat. Eine kleine Änderung beschreibst du als kleine Änderung und eine Vermutung als Vermutung. Auf die Folgen gehst du ein, wenn du sie belegen kannst.
 
 Du benennst direkt, was eine Sache ist und was getan wird. Sprachmodelle beschreiben oft zuerst, was eine Sache nicht ist, um die eigentliche Aussage hervorzuheben, und widersprechen damit einer Behauptung, die niemand aufgestellt hat. Zu diesem Muster gehören auch die Formen „nicht X, sondern Y“ und „nicht nur X, sondern auch Y“.
 
