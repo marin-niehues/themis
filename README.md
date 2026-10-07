@@ -6,22 +6,19 @@ Die Regeln stehen in `RULES.md` und werden bei jedem Start einer Session aktuell
 
 ## Installation
 
-Voraussetzungen: Claude Code, GitHub CLI (`gh`) angemeldet, Lesezugriff auf dieses Repo.
+Voraussetzungen: Claude Code, GitHub CLI (`gh`) angemeldet, Lesezugriff auf dieses Repo, `python3`.
 
-```
-gh auth status
-```
-
-Falls nicht angemeldet: `gh auth login`.
-
-Dann in Claude Code:
-
-```
-/plugin marketplace add marin-niehues/themis
-/plugin install themis@niehues
+```bash
+gh repo clone marin-niehues/themis ~/themis
 ```
 
-Fertig. Neue Session starten, die Regeln sind drin.
+```bash
+~/themis/install.sh
+```
+
+Das Skript trägt themis in `~/.claude/settings.json` ein und legt vorher eine Sicherungskopie der Datei an. Danach eine neue Session starten, die Regeln sind drin.
+
+Der Ordner `~/themis` muss liegen bleiben. Ein `git pull` ist für neue Regeln nicht nötig, weil sie bei jedem Start aus dem Repo geholt werden.
 
 ## Verhalten
 
@@ -36,15 +33,12 @@ Cache: `~/.cache/themis/rules.md`
 
 ## Deinstallation
 
-```
-/plugin uninstall themis@niehues
-/plugin marketplace remove niehues
+```bash
+~/themis/uninstall.sh
 ```
 
-Optional den Cache löschen:
-
-```
-rm -rf ~/.cache/themis
+```bash
+rm -rf ~/themis
 ```
 
 Danach ist nichts mehr da.
@@ -56,7 +50,8 @@ Die Herleitung der Regeln mit Quellen steht in `docs/katalog.md`.
 
 - **Regeln ändern:** `RULES.md` bearbeiten und auf `main` pushen. Gilt ab der nächsten Session aller Nutzer. Kein Versionsbump nötig.
 - **Regeln abschalten:** `RULES.md` leeren oder löschen. Oder das Repo privat halten und einzelnen Personen den Zugriff entziehen.
-- **Plugin selbst ändern:** Version in `themis/.claude-plugin/plugin.json` erhöhen und pushen. Nutzer bekommen das Update über `/plugin marketplace update niehues` oder automatisch, wenn sie Auto-Update für den Marketplace eingeschaltet haben.
+- **Skripte ändern:** pushen. Nutzer bekommen die Änderung mit `git pull` in ihrem Ordner.
+- **Alternative über das Plugin-System:** Das Repo lässt sich auch mit `/plugin marketplace add marin-niehues/themis` und `/plugin install themis@niehues` einbinden. Nur einen der beiden Wege nutzen, sonst werden die Regeln doppelt geladen.
 - **Abruf von Hand prüfen:**
 
 ```
