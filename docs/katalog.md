@@ -94,7 +94,9 @@ Quellen: no-slop (commits-and-prs.md), https://www.theregister.com/2026/02/03/gi
 
 ## 6. Oberflächen
 
-Die UI-Muster in `RULES.md` (Pill über Hero, Eyebrow-Label, Verlaufstext, Glas-Karten, Drei-Spalten-Grid, Logoreihe, Zahlenband) stammen aus eigener Beobachtung von Generator-Ausgaben, nicht aus einer der recherchierten Quellen. Sie sind als Erfahrungsregel aufgenommen und sollten bei Gelegenheit mit Beispielen aus eigenen Projekten belegt werden.
+Die Muster zu Marketingseiten in `RULES.md` (Pill über der Hauptüberschrift, Eyebrow, Raster aus drei Spalten, Logoreihe) stammen aus eigener Beobachtung von Generator-Ausgaben.
+
+Die Muster zu Komponenten stammen aus einem LinkedIn-Beitrag von Sandro M. (Product Design und UX/UI) vom Oktober 2026. Er ließ ein Modell zehn Komponenten einmal im üblichen Generator-Stil und einmal so gestalten, wie ein Mensch es täte. Die Generator-Fassungen enthielten Farbverläufe, Hilfetexte zu selbsterklärenden Feldern, Fortschrittsbalken, senkrechte Trenner, Pills, Icons und Metadaten zu jeder Angabe. Seine Erklärung lautet, dass ein Modell lieber eine Angabe doppelt nennt, als eine zu vergessen. Ein Kommentar unter dem Beitrag fasst den Unterschied so: Das Modell fragt, was noch hineinpasst, und der Mensch fragt, was er weglassen kann. Der Beitrag ist eine Einzelbeobachtung ohne Messung.
 
 ## 7. Pflege
 

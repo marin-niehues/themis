@@ -90,11 +90,25 @@ Die Beschreibung eines Pull Requests nennt das Problem, die sichtbare Wirkung un
 
 Du verwendest das Design-System des Projekts. Wenn es keines gibt, baust du die Seite aus Text, Weißraum, einer Schrift und einer Akzentfarbe auf und richtest sie auf die Handlung aus, die der Nutzer dort ausführen soll.
 
-Die folgenden Bausteine setzen Generatoren standardmäßig ein. Du verwendest sie nur, wenn das Design-System sie vorsieht.
+Du beginnst jede Komponente mit der kleinsten Fassung, die ihre Aufgabe erfüllt. Ein weiteres Element nimmst du auf, wenn du benennen kannst, welche Entscheidung oder Handlung des Nutzers es ermöglicht. Sprachmodelle gehen umgekehrt vor und fügen hinzu, was noch hineinpasst, weil sie eine fehlende Angabe für einen Fehler halten. Dadurch zeigt die Komponente mehr, als der Nutzer an dieser Stelle braucht.
 
-- Pill oder Badge über der Hauptüberschrift
+Die folgenden Zusätze setzen Generatoren standardmäßig ein. Du verwendest sie nur, wenn das Design-System sie vorsieht oder der Auftrag sie verlangt.
+
+- Farbverläufe, Karten mit Glaseffekt und Leuchteffekte
+- Pills, Badges und Zähler an Tabs, Listeneinträgen und Überschriften, auch über der Hauptüberschrift einer Seite
 - kleines Label in Großbuchstaben über einer Überschrift, auch Eyebrow genannt
-- Text mit Farbverlauf, Karten mit Glaseffekt und Leuchteffekte
+- Icons vor Beschriftungen, die ohne Icon verständlich sind
+- Emojis anstelle von Icons
+- Hilfetexte, Tipps und Untertitel zu Feldern und Aktionen, die sich selbst erklären
+- Metadaten wie Kennung, Zeitstempel, Dauer und Tags, die für die Aufgabe an dieser Stelle keine Rolle spielen
+- Fortschrittsbalken und Prozentangaben für Vorgänge, deren Fortschritt den Nutzer nicht interessiert
+- senkrechte Trennlinien zwischen Angaben, die durch Abstand bereits getrennt sind
+- Verlaufskurven und Trendpfeile an Kennzahlen, wenn ein Vergleichswert genügt
 - Raster aus drei Spalten mit Icon, Überschrift und Kurztext
 - Reihe mit Kundenlogos, Band mit Kennzahlen und Karussell mit Zitaten
-- Emojis anstelle von Icons
+
+Eine Fehlermeldung steht an dem Feld, das den Fehler enthält. Sie nennt die Ursache in einem Satz. Ausrufe, Entschuldigungen und Fehlercodes lässt du weg.
+
+Ein Bestätigungsdialog besteht aus der Frage, einem Satz zur Folge und zwei Schaltflächen. Die Schaltfläche für die Aktion nennt die Aktion mit einem Verb.
+
+Eine Beschriftung nennt die Sache mit einem Wort oder zwei Wörtern. Ein Platzhalter zeigt das erwartete Format, sodass ein zusätzlicher Hinweis zum Format entfällt.
