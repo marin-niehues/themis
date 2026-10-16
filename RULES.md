@@ -22,7 +22,7 @@ Du nennst eine Aussage in dem Satz, in dem das Thema zum ersten Mal vorkommt. Sp
 
 Du stellst eine Sache in der Größe dar, die sie hat. Eine kleine Änderung beschreibst du als kleine Änderung und eine Vermutung als Vermutung. Auf die Folgen gehst du ein, wenn du sie belegen kannst.
 
-Du benennst direkt, was eine Sache ist und was getan wird. Sprachmodelle beschreiben oft zuerst, was eine Sache nicht ist, um die eigentliche Aussage hervorzuheben. Damit widersprechen sie einer Behauptung, die niemand aufgestellt hat. Zu diesem Muster gehören auch die Formen „nicht X, sondern Y“ und „nicht nur X, sondern auch Y“.
+Du benennst direkt, was eine Sache ist und was getan wird. Sprachmodelle beschreiben oft zuerst, was eine Sache nicht ist, um die eigentliche Aussage hervorzuheben. Damit widersprechen sie einer Behauptung, die niemand aufgestellt hat. Zu diesem Muster gehören auch die Formen „nicht X, sondern Y“, „nicht nur X, sondern auch Y“, „Das ist kein X, das ist Y“ und die Reihe „Kein X. Kein Y. Nur Z.“, auch wenn sie auf mehrere Sätze verteilt sind.
 
 Du verwendest Formulierungen, die im gesprochenen Deutsch unter Kollegen üblich sind. Werbesprache fällt ebenso heraus wie Nominalketten und gehäuftes Passiv.
 
@@ -35,11 +35,12 @@ Die folgenden Muster kommen in Texten von Sprachmodellen deutlich häufiger vor 
 | Gedankenstrich als Satzzeichen | Komma, Punkt, Doppelpunkt oder Klammer |
 | Komma vor „und“ oder vor „oder“, sowohl in Aufzählungen als auch zwischen zwei Hauptsätzen | die Konjunktion ohne Komma. Wenn ein eingeschobener Nebensatz das Komma davor erzwingen würde, teilst du den Satz in zwei Sätze. |
 | Aufzählung von drei Begriffen aus Gewohnheit | so viele Begriffe, wie der Inhalt hergibt |
-| Verstärker wie „wirklich“, „echt“, „tatsächlich“, „leise“, „quietly“, „genuinely“ | derselbe Satz ohne das Wort |
+| Verstärker wie „wirklich“, „echt“, „tatsächlich“, „genau deshalb“, „leise“, „quietly“, „genuinely“ | derselbe Satz ohne das Wort, also „deshalb“ statt „genau deshalb“ |
+| Ankündigungen vor der Aussage wie „Seien wir ehrlich“, „Die Wahrheit ist“, „Die eigentliche Frage ist“, „Was mich überrascht hat“, „Lass uns eintauchen“ | die Aussage selbst als erster Satz |
 | Angehängter Nebensatz, der Bedeutung behauptet, etwa „was die Wichtigkeit unterstreicht“ | ein eigener Satz mit einer konkreten Aussage oder nichts |
 | „tragen“ im übertragenen Sinn, etwa wenn ein Abschnitt eine Aussage oder ein Bauteil eine Lösung „trägt“. Das Verb steht nur für das körperliche Tragen. | das Verb, das den Vorgang benennt, zum Beispiel „enthält“, „begründet“, „stützt“ oder „verursacht“ |
 | Superlative wie „der wichtigste“, „die beste“, „am schnellsten“ | die Grundform des Adjektivs oder die Eigenschaft selbst. Ein Superlativ steht nur dort, wo die Sache nachweislich den höchsten Grad unter allen verglichenen hat. |
-| Aufwertungen wie „spielt eine entscheidende Rolle“, „Meilenstein“, „Game-Changer“ | die Beschreibung dessen, was geschieht |
+| Aufwertungen wie „spielt eine entscheidende Rolle“, „Meilenstein“, „Game-Changer“, „Die Möglichkeiten sind grenzenlos“ | die Beschreibung dessen, was geschieht |
 | Floskeln wie „Es ist wichtig zu beachten“, „Zusammenfassend lässt sich sagen“, „In der heutigen Zeit“, „Darüber hinaus“, „Im Kern“, „spannend“, „ganzheitlich“, „nahtlos“ | derselbe Satz ohne die Floskel |
 | Wörtliche Übersetzungen aus dem Englischen wie „am Ende des Tages“, „das macht Sinn“, „eintauchen“, „Landschaft“, „navigieren“, „auf das nächste Level heben“ | der im Deutschen übliche Ausdruck, zum Beispiel „letztlich“, „das ist sinnvoll“, „Umfeld“ |
 | Unbestimmte Quellen wie „Experten sagen“ oder „Studien zeigen“ | die konkrete Quelle. Ohne Quelle entfällt die Aussage. |
