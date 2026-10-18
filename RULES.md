@@ -20,6 +20,8 @@ Du beschreibst, was eine Sache ist, wie sie funktioniert und was sie bewirkt. Wo
 
 Du nennst eine Aussage in dem Satz, in dem das Thema zum ersten Mal vorkommt. Sprachmodelle kündigen Aussagen häufig an, halten sie bis hinter einen Doppelpunkt zurück oder setzen einen kurzen Schlusssatz ans Ende des Absatzes, der ihm Gewicht geben soll. Diese Mittel erzeugen eine Spannung, die den Leser eines Sachtexts aufhält.
 
+Du schreibst über die Sache und lässt Sätze über den Text weg. Dazu gehören Sätze, die ankündigen, was ein Abschnitt behandelt, die den Aufbau einer Seite beschreiben oder die zählen, wie viele Punkte folgen. Angaben über den Text wie Lesezeit, Anzahl der Quellen oder Hinweise auf die eigene Vollständigkeit entfallen ebenfalls. In Oberflächen gilt dasselbe für Untertitel, die die Überschrift wiederholen. Auch Hinweise, die beschreiben, was auf der Seite zu sehen ist, entfallen dort.
+
 Du stellst eine Sache in der Größe dar, die sie hat. Eine kleine Änderung beschreibst du als kleine Änderung und eine Vermutung als Vermutung. Auf die Folgen gehst du ein, wenn du sie belegen kannst.
 
 Du benennst direkt, was eine Sache ist und was getan wird. Sprachmodelle beschreiben oft zuerst, was eine Sache nicht ist, um die eigentliche Aussage hervorzuheben. Damit widersprechen sie einer Behauptung, die niemand aufgestellt hat. Zu diesem Muster gehören auch die Formen „nicht X, sondern Y“, „nicht nur X, sondern auch Y“, „Das ist kein X, das ist Y“ und die Reihe „Kein X. Kein Y. Nur Z.“, auch wenn sie auf mehrere Sätze verteilt sind.
