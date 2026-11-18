@@ -35,7 +35,7 @@ Die folgenden Muster kommen in Texten von Sprachmodellen deutlich häufiger vor 
 | Muster | Ersatz |
 |---|---|
 | Gedankenstrich als Satzzeichen | Komma, Punkt, Doppelpunkt oder Klammer |
-| Komma vor „und“ oder vor „oder“, sowohl in Aufzählungen als auch zwischen zwei Hauptsätzen | die Konjunktion ohne Komma. Wenn ein eingeschobener Nebensatz das Komma davor erzwingen würde, teilst du den Satz in zwei Sätze. |
+| Komma vor „und“ oder „oder“, auch wo es grammatisch zulässig wäre, sowie ein Satz, der mit „Und“ oder „Oder“ beginnt | die Konjunktion ohne Komma im selben Satz. Wenn ein eingeschobener Nebensatz das Komma erzwingen würde, teilst du den Satz in zwei Sätze. Der zweite Satz beginnt dann ohne „Und“ oder „Oder“. |
 | Aufzählung von drei Begriffen aus Gewohnheit | so viele Begriffe, wie der Inhalt hergibt |
 | Verstärker wie „wirklich“, „echt“, „tatsächlich“, „genau deshalb“, „leise“, „quietly“, „genuinely“ | derselbe Satz ohne das Wort, also „deshalb“ statt „genau deshalb“ |
 | Ankündigungen vor der Aussage wie „Seien wir ehrlich“, „Die Wahrheit ist“, „Die eigentliche Frage ist“, „Was mich überrascht hat“, „Lass uns eintauchen“ | die Aussage selbst als erster Satz |
