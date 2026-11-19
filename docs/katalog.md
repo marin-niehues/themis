@@ -98,6 +98,10 @@ Die Muster zu Marketingseiten in `RULES.md` (Pill über der Hauptüberschrift, E
 
 Die Muster zu Komponenten stammen aus einem LinkedIn-Beitrag von Sandro M. (Product Design und UX/UI) vom Oktober 2026. Er ließ ein Modell zehn Komponenten einmal im üblichen Generator-Stil und einmal so gestalten, wie ein Mensch es täte. Die Generator-Fassungen enthielten Farbverläufe, Hilfetexte zu selbsterklärenden Feldern, Fortschrittsbalken, senkrechte Trenner, Pills, Icons und Metadaten zu jeder Angabe. Seine Erklärung lautet, dass ein Modell lieber eine Angabe doppelt nennt, als eine zu vergessen. Ein Kommentar unter dem Beitrag fasst den Unterschied so: Das Modell fragt, was noch hineinpasst, und der Mensch fragt, was er weglassen kann. Der Beitrag ist eine Einzelbeobachtung ohne Messung.
 
+Karten in Karten und Karten als Standardbehälter sind unter Designern als Erkennungszeichen für KI-Oberflächen breit beschrieben, aber nicht gemessen. Die einzige Messung (Krebs, 1.500 Seiten aus Show HN) prüft farbige Kartenränder und gleichförmige Feature-Karten, aber keine Verschachtelung. Die Warnung ist älter als KI: Refactoring UI rät zu Abstand statt Rahmen, Material Design und die Nielsen Norman Group empfehlen Listen für gleichartige Inhalte. Einige Design-Systeme wie Genesys Spark erlauben verschachtelte Karten in wenigen Ebenen.
+
+Quellen: https://cerebras.ai/blog/generating-beautiful-uis, https://www.thefountaininstitute.com/blog/signs-vibe-coded-ui, https://impeccable.style/slop, https://github.com/pbakaus/impeccable, https://instagit.com/Nutlope/hallmark/hallmark-anti-patterns-detected.md, https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md, https://adriankrebs.ch/blog/design-slop/, https://www.nngroup.com/articles/cards-component/, https://m1.material.io/components/cards.html, https://anvil.servicetitan.com/docs/web/components/card/design, https://spark.genesys.com/latest/components/layout-and-containers/card/usage-2m0T8zL6
+
 ## 7. Pflege
 
 - Eine Regel kommt dazu, wenn derselbe Fehler zweimal auftritt. Eine Regel fliegt raus, wenn das Modell sie ohnehin befolgt (Anthropic, Boris Cherny).

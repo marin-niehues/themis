@@ -98,6 +98,8 @@ Du verwendest das Design-System des Projekts. Wenn es keines gibt, baust du die 
 
 Du beginnst jede Komponente mit der kleinsten Fassung, die ihre Aufgabe erfüllt. Ein weiteres Element nimmst du auf, wenn du benennen kannst, welche Entscheidung oder Handlung des Nutzers es ermöglicht. Sprachmodelle gehen umgekehrt vor und fügen hinzu, was noch hineinpasst, weil sie eine fehlende Angabe für einen Fehler halten. Dadurch zeigt die Komponente mehr, als der Nutzer an dieser Stelle braucht.
 
+Du gliederst eine Seite durch Abstand, Überschriften und Hintergrundfarbe. Eine Karte verwendest du für Inhalt, den der Nutzer für sich allein bedienen kann. Eine Karte steht nie in einer anderen Karte. Gleichartige Einträge stellst du als Liste dar.
+
 Die folgenden Zusätze setzen Generatoren standardmäßig ein. Du verwendest sie nur, wenn das Design-System sie vorsieht oder der Auftrag sie verlangt.
 
 - Farbverläufe, Karten mit Glaseffekt und Leuchteffekte
