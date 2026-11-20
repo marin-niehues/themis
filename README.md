@@ -12,7 +12,7 @@ themis gibt Claude Code bei jedem Start einer Session gemeinsame Regeln für Tex
 </tr>
 </table>
 
-Die linke Seite ist ein gestelltes Anschauungsbeispiel, für das Claude absichtlich jedes Muster eingebaut hat, das `RULES.md` ausschließt. Die rechte Seite hat Claude nach `RULES.md` gebaut. Ein Klick auf ein Bild öffnet die ganze Seite. Einen echten Durchlauf derselben Aufgabe ohne Inszenierung zeigt der Ordner `docs/vergleich`.
+Die linke Seite ist ein gestelltes Anschauungsbeispiel. Claude hat sie absichtlich so gebaut, wie Generatoren eine typische SaaS-Seite bauen, mit Mustern, die `RULES.md` ausschließt. Die rechte Seite hat Claude nach `RULES.md` gebaut. Ein Klick auf ein Bild öffnet die ganze Seite. Einen echten Durchlauf derselben Aufgabe ohne Inszenierung zeigt der Ordner `docs/vergleich`.
 
 ## Installation
 
