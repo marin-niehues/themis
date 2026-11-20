@@ -102,6 +102,8 @@ Karten in Karten und Karten als Standardbehälter sind unter Designern als Erken
 
 Quellen: https://cerebras.ai/blog/generating-beautiful-uis, https://www.thefountaininstitute.com/blog/signs-vibe-coded-ui, https://impeccable.style/slop, https://github.com/pbakaus/impeccable, https://instagit.com/Nutlope/hallmark/hallmark-anti-patterns-detected.md, https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md, https://adriankrebs.ch/blog/design-slop/, https://www.nngroup.com/articles/cards-component/, https://m1.material.io/components/cards.html, https://anvil.servicetitan.com/docs/web/components/card/design, https://spark.genesys.com/latest/components/layout-and-containers/card/usage-2m0T8zL6
 
+Eine ausführliche Recherche zu visuellen Erkennungszeichen mit 23 Katalogen, zwei Messungen und 48 Regelvorschlägen steht in `docs/reports/Erkennungszeichen von KI Oberflächen.md`. Übernommen wurden die Vorschläge, die ein Erkennungszeichen betreffen und gut belegt sind. Verworfen wurden feste Maße, allgemeines Designwissen, Detailregeln zur Barrierefreiheit, CSS-Technik und Prüfschritte, die zusätzliche Werkzeuge voraussetzen.
+
 ## 7. Pflege
 
 - Eine Regel kommt dazu, wenn derselbe Fehler zweimal auftritt. Eine Regel fliegt raus, wenn das Modell sie ohnehin befolgt (Anthropic, Boris Cherny).

@@ -84,6 +84,7 @@ Ein Werbetext nennt, was dieses Produkt von anderen unterscheidet. Er belegt das
 - Code, der sicher unbenutzt ist, löschst du vollständig, also ohne Kompatibilitätsschicht und ohne Hinweis auf die Entfernung.
 - Was zum Auftrag gehört, setzt du sofort um und hinterlässt dafür kein TODO. Debug-Ausgaben entfernst du vor dem Abschluss. Zusätzliche Dateien legst du nur an, wenn die Aufgabe sie erfordert.
 - Ein Test prüft ein Verhalten am beobachtbaren Ergebnis und verwendet das getestete System selbst, also ohne Mock an dessen Stelle. Wenn ein bestehender Test fehlschlägt, behebst du die Ursache im Code. Wenn sich das gewünschte Verhalten ändert, passt du den Test an und teilst das mit.
+- Ein Formular meldet Erfolg erst, wenn der Server die Anfrage bestätigt hat.
 - Die Arbeit ist abgeschlossen, wenn die Tests nach der letzten Änderung gelaufen sind. Wenn du nur einen Teil der Tests ausgeführt hast, sagst du das.
 
 ## Commits und Pull Requests
@@ -94,29 +95,51 @@ Die Beschreibung eines Pull Requests nennt das Problem, die sichtbare Wirkung un
 
 ## Oberflächen
 
-Du verwendest das Design-System des Projekts. Wenn es keines gibt, baust du die Seite aus Text, Weißraum, einer Schrift und einer Akzentfarbe auf und richtest sie auf die Handlung aus, die der Nutzer dort ausführen soll.
+Du verwendest das Design-System des Projekts. Wenn es keines gibt, legst du vor dem Bauen Farben, Schrift, helle oder dunkle Darstellung und Aufbau fest. Jede dieser Entscheidungen leitest du aus der Marke oder dem Gegenstand des Projekts ab und nennst die Begründung in deiner Antwort. Wenn deine Festlegung genauso zu einem beliebigen anderen Projekt passen würde, wählst du neu. Die Standardwerte eines Frameworks übernimmst du nur, wenn das Projekt sie bereits verwendet.
+
+Du richtest jede Seite auf die Handlung aus, die der Nutzer dort ausführen soll. Eine Ansicht hat eine Hauptaktion, die als gefüllte Schaltfläche erscheint. Weitere Aktionen stellst du ohne Füllung oder als Link dar. Die Abschnitte einer Seite und ihre Reihenfolge leitest du aus dem ab, was der Besucher dort erfahren oder erledigen will. Eine Seite in einer Anwendung beginnt mit ihrem Inhalt und kommt ohne Begrüßung und einleitenden Text aus.
 
 Du beginnst jede Komponente mit der kleinsten Fassung, die ihre Aufgabe erfüllt. Ein weiteres Element nimmst du auf, wenn du benennen kannst, welche Entscheidung oder Handlung des Nutzers es ermöglicht. Sprachmodelle gehen umgekehrt vor und fügen hinzu, was noch hineinpasst, weil sie eine fehlende Angabe für einen Fehler halten. Dadurch zeigt die Komponente mehr, als der Nutzer an dieser Stelle braucht.
 
 Du gliederst eine Seite durch Abstand, Überschriften und Hintergrundfarbe. Eine Karte verwendest du für Inhalt, den der Nutzer für sich allein bedienen kann. Eine Karte steht nie in einer anderen Karte. Gleichartige Einträge stellst du als Liste dar.
 
+Zahlen, Zitate, Namen, Logos und Bilder auf einer Seite stammen vom Nutzer oder aus dem Projekt. Wenn sie fehlen, lässt du den Abschnitt weg und nennst die fehlende Angabe in deiner Antwort.
+
+Text hat gegenüber seinem Hintergrund ein Kontrastverhältnis von mindestens 4,5:1. Für große Überschriften genügt ein Verhältnis von 3:1. Das Verhältnis prüfst du auch für grauen Text, Platzhalter und Text auf farbigen Flächen.
+
 Die folgenden Zusätze setzen Generatoren standardmäßig ein. Du verwendest sie nur, wenn das Design-System sie vorsieht oder der Auftrag sie verlangt.
 
 - Farbverläufe, Karten mit Glaseffekt und Leuchteffekte
+- cremefarbener Hintergrund mit Serifenschrift und Terrakotta als Akzent, ebenso ein fast schwarzes Design mit einer einzelnen Neonfarbe
+- ein Wort in einer Überschrift, das durch Farbe, Kursivschrift oder eine andere Schrift hervorgehoben ist
 - Pills, Badges und Zähler an Tabs, Listeneinträgen und Überschriften, auch über der Hauptüberschrift einer Seite
-- kleines Label in Großbuchstaben über einer Überschrift, auch Eyebrow genannt
+- kleines Label in Großbuchstaben über einer Überschrift, auch Eyebrow genannt, sowie gesperrte Versalien in Beschriftungen und Tabellenköpfen
+- Monospace-Schrift für Labels und Überschriften
 - Icons vor Beschriftungen, die ohne Icon verständlich sind
+- Icons in einer getönten Kachel
 - Emojis anstelle von Icons
+- Funkelsymbol als Kennzeichen für Funktionen mit KI
+- derselbe Radius und derselbe Schatten auf jeder Fläche
+- farbiger Streifen am Rand einer Karte oder eines Hinweiskastens
 - Hilfetexte, Tipps und Untertitel zu Feldern und Aktionen, die sich selbst erklären
 - Metadaten wie Kennung, Zeitstempel, Dauer und Tags, die für die Aufgabe an dieser Stelle keine Rolle spielen
 - Fortschrittsbalken und Prozentangaben für Vorgänge, deren Fortschritt den Nutzer nicht interessiert
-- senkrechte Trennlinien zwischen Angaben, die durch Abstand bereits getrennt sind
+- senkrechte Trennlinien und Mittelpunkte zwischen Angaben, die durch Abstand bereits getrennt sind
+- pulsierende Statuspunkte
+- Nummern wie 01, 02 und 03 vor Abschnitten ohne feste Reihenfolge
+- ein Pfeil hinter jedem Link und jeder Schaltfläche
 - Verlaufskurven und Trendpfeile an Kennzahlen, wenn ein Vergleichswert genügt
 - Raster aus drei Spalten mit Icon, Überschrift und Kurztext
 - Reihe mit Kundenlogos, Band mit Kennzahlen und Karussell mit Zitaten
+- beim Scrollen eingeblendete Inhalte und beim Überfahren mit der Maus angehobene Karten
+- hochzählende Zahlen und Text, der Buchstabe für Buchstabe erscheint
+
+Jede Ansicht, die Daten zeigt, hat einen Ladezustand, einen leeren Zustand und einen Fehlerzustand. Der leere Zustand nennt, was fehlt. Er bietet die Aktion an, mit der der Nutzer das ändert. Einen Ladefehler zeigst du als Fehler an, damit der Nutzer ihn von einem leeren Ergebnis unterscheiden kann.
 
 Eine Fehlermeldung steht an dem Feld, das den Fehler enthält. Sie nennt die Ursache in einem Satz. Ausrufe, Entschuldigungen und Fehlercodes lässt du weg.
 
-Ein Bestätigungsdialog besteht aus der Frage, einem Satz zur Folge und zwei Schaltflächen. Die Schaltfläche für die Aktion nennt die Aktion mit einem Verb.
+Jede Schaltfläche nennt ihre Aktion mit einem Verb und dem Gegenstand der Aktion. Dieselbe Aktion heißt im ganzen Ablauf gleich. Ein Bestätigungsdialog besteht aus der Frage, einem Satz zur Folge und zwei Schaltflächen.
 
 Eine Beschriftung nennt die Sache mit einem Wort oder zwei Wörtern. Ein Platzhalter zeigt das erwartete Format, sodass ein zusätzlicher Hinweis zum Format entfällt.
+
+Du bezeichnest eine Oberfläche als fertig, wenn du sie in dieser Session als Screenshot in Desktopbreite und in der Breite eines Telefons gesehen hast.
