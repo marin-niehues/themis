@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>themis für Claude Code</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Semi+Condensed:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #ffffff;
+    --leaf: #f1f2f3;
+    --ink: #1b1e22;
+    --ink-soft: #4f555c;
+    --rule: #d5d8dc;
+    --binding: #9e1b32;
+    --binding-dark: #7f1528;
+    --code-bg: #e9ebee;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Barlow", system-ui, sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+
+  .wrap {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  header {
+    border-top: 6px solid var(--binding);
+  }
+
+  header .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .wordmark {
+    font-family: "Barlow Semi Condensed", "Barlow", sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  a { color: var(--binding); }
+  a:hover { color: var(--binding-dark); }
+
+  h1, h2 {
+    font-family: "Barlow Semi Condensed", "Barlow", sans-serif;
+    font-weight: 600;
+    line-height: 1.15;
+    margin: 0 0 1rem;
+  }
+
+  h1 { font-size: clamp(2.1rem, 6vw, 3.1rem); }
+  h2 { font-size: clamp(1.6rem, 4vw, 2rem); }
+
+  p { margin: 0 0 1rem; }
+
+  .lead { font-size: 1.25rem; }
+
+  main section { padding: 3.5rem 0; }
+  main section.leaf { background: var(--leaf); }
+
+  .hero { padding-top: 2.5rem; }
+
+  pre {
+    margin: 1.75rem 0 1rem;
+    padding: 1rem 1.1rem;
+    background: var(--code-bg);
+    border-radius: 3px;
+    overflow-x: auto;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  code {
+    font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+  }
+
+  p code, li code, td code {
+    font-size: 0.92em;
+    background: var(--code-bg);
+    padding: 0.05em 0.3em;
+    border-radius: 2px;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  button.primary {
+    font: inherit;
+    font-weight: 600;
+    background: var(--binding);
+    color: #ffffff;
+    border: 0;
+    border-radius: 4px;
+    padding: 0.7rem 1.3rem;
+    cursor: pointer;
+    min-width: 11rem;
+  }
+
+  button.primary:hover { background: var(--binding-dark); }
+  button.primary:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+
+  .copy-error {
+    color: var(--binding-dark);
+    margin: 0 0 1rem;
+  }
+
+  .note { color: var(--ink-soft); font-size: 1rem; }
+
+  ol { padding-left: 1.4rem; margin: 0 0 1rem; }
+  ol li { margin-bottom: 0.5rem; padding-left: 0.25rem; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0 1.25rem;
+    font-size: 1rem;
+  }
+
+  th, td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.7rem 0.75rem 0.7rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  th {
+    font-weight: 600;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  td.area { color: var(--ink-soft); white-space: nowrap; }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 2rem 0 3rem;
+    font-size: 1rem;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 600px) {
+    body { font-size: 1.0625rem; }
+    main section { padding: 2.5rem 0; }
+
+    table.stack thead { display: none; }
+    table.stack, table.stack tbody, table.stack tr, table.stack td { display: block; width: 100%; }
+    table.stack tr { padding: 0.8rem 0; border-bottom: 1px solid var(--rule); }
+    table.stack td { border: 0; padding: 0.1rem 0; }
+    table.stack td.area { font-size: 0.95rem; }
+    table.stack td[data-label]::before {
+      content: attr(data-label) ": ";
+      font-weight: 600;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="wordmark" href="#">themis</a>
+    <a href="https://github.com/marin-niehues/themis">GitHub</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1>Eine Regeldatei für jede Claude-Code-Session im Team</h1>
+      <p class="lead">themis ist ein Plugin für Claude Code. Es lädt beim Start jeder Session die gemeinsame Regeldatei aus einem GitHub-Repository und gibt sie Claude als Kontext, damit Claude Texte, Code und Oberflächen ohne die typischen Muster von Sprachmodellen schreibt.</p>
+
+      <pre id="install"><code>gh repo clone marin-niehues/themis ~/themis
+~/themis/install.sh</code></pre>
+
+      <div class="actions">
+        <button class="primary" id="copy" type="button">Befehle kopieren</button>
+        <a href="https://github.com/marin-niehues/themis">Repository öffnen</a>
+      </div>
+      <p class="copy-error" id="copy-error" hidden>Der Browser hat den Zugriff auf die Zwischenablage verweigert. Markiere die Befehle und kopiere sie von Hand.</p>
+
+      <p class="note">Für die Installation brauchst du Claude Code und die GitHub CLI <code>gh</code> mit Zugriff auf das Repository.</p>
+    </div>
+  </section>
+
+  <section class="leaf">
+    <div class="wrap">
+      <h2>Was beim Start einer Session passiert</h2>
+      <ol>
+        <li>Du startest Claude Code in einem beliebigen Projekt.</li>
+        <li>themis holt die aktuelle Regeldatei aus dem Repository auf GitHub.</li>
+        <li>Claude erhält die Regeln als Kontext und wendet sie auf alles an, was es in dieser Session schreibt.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Eine Änderung gilt für alle</h2>
+      <p>Die Regeln liegen an einer Stelle im Repository. Wenn jemand im Team eine Regel ändert und den Commit pusht, arbeitet ab der nächsten Session jeder mit der neuen Fassung, ohne dass jemand eine Datei in seine Projekte kopieren muss.</p>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>CLAUDE.md je Person</th>
+            <th>themis</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="area">Ort der Regeln</td>
+            <td>auf jedem Rechner einzeln</td>
+            <td>ein Repository auf GitHub</td>
+          </tr>
+          <tr>
+            <td class="area">Änderung verteilen</td>
+            <td>jede Person passt ihre Datei an</td>
+            <td>ein Commit</td>
+          </tr>
+          <tr>
+            <td class="area">Stand im Team</td>
+            <td>weicht mit der Zeit ab</td>
+            <td>gleich ab der nächsten Session</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="leaf">
+    <div class="wrap">
+      <h2>Was die Regeln ändern</h2>
+      <p>Jede Regel benennt ein Muster, das in Texten von Sprachmodellen häufiger vorkommt als in Texten von Menschen. Sie gibt an, was Claude stattdessen schreibt.</p>
+      <table class="stack">
+        <thead>
+          <tr>
+            <th>Bereich</th>
+            <th>Muster</th>
+            <th>Ersatz</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="area">Text</td>
+            <td data-label="Muster">Gedankenstrich als Satzzeichen</td>
+            <td data-label="Ersatz">Komma, Punkt, Doppelpunkt oder Klammer</td>
+          </tr>
+          <tr>
+            <td class="area">Text</td>
+            <td data-label="Muster">„nicht X, sondern Y“ als Einstieg in eine Aussage</td>
+            <td data-label="Ersatz">die Aussage über die Sache selbst</td>
+          </tr>
+          <tr>
+            <td class="area">Text</td>
+            <td data-label="Muster">„Experten sagen“ oder „Studien zeigen“</td>
+            <td data-label="Ersatz">die konkrete Quelle oder keine Aussage</td>
+          </tr>
+          <tr>
+            <td class="area">Code</td>
+            <td data-label="Muster">Kommentare, die den Code nacherzählen</td>
+            <td data-label="Ersatz">ein Kommentar nur für einen Grund, den der Code nicht zeigt</td>
+          </tr>
+          <tr>
+            <td class="area">Code</td>
+            <td data-label="Muster">stiller Rückfallwert nach einem Fehler</td>
+            <td data-label="Ersatz">der Fehler bleibt sichtbar</td>
+          </tr>
+          <tr>
+            <td class="area">Oberfläche</td>
+            <td data-label="Muster">kleines Label in Großbuchstaben über der Überschrift</td>
+            <td data-label="Ersatz">die Überschrift allein</td>
+          </tr>
+          <tr>
+            <td class="area">Oberfläche</td>
+            <td data-label="Muster">Formular meldet Erfolg vor der Antwort des Servers</td>
+            <td data-label="Ersatz">Erfolgsmeldung erst nach der Bestätigung</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Die vollständige Fassung steht in <a href="https://github.com/marin-niehues/themis">RULES.md im Repository</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>themis ist ein Plugin für Claude Code. Quellcode und Regeln liegen unter <a href="https://github.com/marin-niehues/themis">github.com/marin-niehues/themis</a>.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var button = document.getElementById("copy");
+    var error = document.getElementById("copy-error");
+    var text = document.getElementById("install").innerText.trim();
+    var label = button.textContent;
+
+    button.addEventListener("click", function () {
+      error.hidden = true;
+      if (!navigator.clipboard) {
+        error.hidden = false;
+        return;
+      }
+      navigator.clipboard.writeText(text).then(function () {
+        button.textContent = "Kopiert";
+        setTimeout(function () { button.textContent = label; }, 2000);
+      }, function () {
+        error.hidden = false;
+      });
+    });
+  })();
+</script>
+</body>
+</html>

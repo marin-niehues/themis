@@ -4,6 +4,20 @@ Gemeinsame Schreib- und Arbeitsregeln für Claude Code, als Plugin.
 
 Die Regeln stehen in `RULES.md` und werden bei jedem Start einer Session aktuell aus diesem Repo geholt. Sie liegen nicht dauerhaft auf deinem Rechner. Ändert sich die Datei, gilt die neue Fassung ab deiner nächsten Session.
 
+## Vergleich
+
+Beide Seiten hat Claude Opus 5.5 am 20. November 2026 mit derselben Aufgabe gebaut: eine Landingpage für themis als einzelne HTML-Datei. Für die rechte Seite hat Claude vorher `RULES.md` gelesen. Jede Seite ist ein einzelner Durchlauf.
+
+<table>
+<tr><th>Ohne themis</th><th>Mit themis</th></tr>
+<tr>
+<td valign="top"><img src="docs/vergleich/ohne-regeln.png" alt="Landingpage ohne Regeln" width="420"></td>
+<td valign="top"><img src="docs/vergleich/mit-regeln.png" alt="Landingpage mit Regeln" width="420"></td>
+</tr>
+</table>
+
+Die linke Seite zeigt die Muster, die Anti-Slop-Kataloge 2026 als zweite Welle beschreiben: cremefarbener Hintergrund mit Serifenschrift und Terrakotta, ein Label in Monospace über der Überschrift, ein nachgebautes Terminal mit erfundener Ausgabe und drei nummerierte Karten. Die rechte Seite leitet Farbe und Schrift aus dem Bild einer Loseblattsammlung ab, hat eine Hauptaktion und stellt Vergleiche als Tabelle dar. Die HTML-Dateien liegen in `docs/vergleich`.
+
 ## Installation
 
 Voraussetzungen: Claude Code, GitHub CLI (`gh`) angemeldet, Lesezugriff auf dieses Repo, `python3`.
