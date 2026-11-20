@@ -1,26 +1,22 @@
 # themis
 
-Gemeinsame Schreib- und Arbeitsregeln für Claude Code, als Plugin.
-
-Die Regeln stehen in `RULES.md` und werden bei jedem Start einer Session aktuell aus diesem Repo geholt. Sie liegen nicht dauerhaft auf deinem Rechner. Ändert sich die Datei, gilt die neue Fassung ab deiner nächsten Session.
+themis gibt Claude Code bei jedem Start einer Session gemeinsame Regeln für Texte, Code und Oberflächen mit. Die Regeln stehen in `RULES.md` in diesem Repo. Das Skript holt die Datei bei jedem Start aktuell von GitHub, sodass sie nicht dauerhaft auf deinem Rechner liegt. Wenn sich die Datei ändert, gilt die neue Fassung ab deiner nächsten Session.
 
 ## Vergleich
-
-Beide Seiten hat Claude Opus 5.5 am 20. November 2026 mit derselben Aufgabe gebaut: eine Landingpage für themis als einzelne HTML-Datei. Für die rechte Seite hat Claude vorher `RULES.md` gelesen. Jede Seite ist ein einzelner Durchlauf.
 
 <table>
 <tr><th>Ohne themis</th><th>Mit themis</th></tr>
 <tr>
-<td valign="top"><img src="docs/vergleich/ohne-regeln.png" alt="Landingpage ohne Regeln" width="420"></td>
-<td valign="top"><img src="docs/vergleich/mit-regeln.png" alt="Landingpage mit Regeln" width="420"></td>
+<td valign="top"><a href="docs/vergleich/anschauung/ohne-themis-ganz.jpg"><img src="docs/vergleich/anschauung/ohne-themis.png" alt="Landingpage voller KI-Muster" width="420"></a></td>
+<td valign="top"><a href="docs/vergleich/anschauung/mit-themis-ganz.jpg"><img src="docs/vergleich/anschauung/mit-themis.png" alt="Landingpage nach den Regeln von themis" width="420"></a></td>
 </tr>
 </table>
 
-Die linke Seite zeigt die Muster, die Anti-Slop-Kataloge 2026 als zweite Welle beschreiben: cremefarbener Hintergrund mit Serifenschrift und Terrakotta, ein Label in Monospace über der Überschrift, ein nachgebautes Terminal mit erfundener Ausgabe und drei nummerierte Karten. Die rechte Seite leitet Farbe und Schrift aus dem Bild einer Loseblattsammlung ab, hat eine Hauptaktion und stellt Vergleiche als Tabelle dar. Die HTML-Dateien liegen in `docs/vergleich`.
+Die linke Seite ist ein gestelltes Anschauungsbeispiel, für das Claude absichtlich jedes Muster eingebaut hat, das `RULES.md` ausschließt. Die rechte Seite hat Claude nach `RULES.md` gebaut. Ein Klick auf ein Bild öffnet die ganze Seite. Einen echten Durchlauf derselben Aufgabe ohne Inszenierung zeigt der Ordner `docs/vergleich`.
 
 ## Installation
 
-Voraussetzungen: Claude Code, GitHub CLI (`gh`) angemeldet, Lesezugriff auf dieses Repo, `python3`.
+Du brauchst Claude Code, `python3` und die GitHub CLI `gh`, bei der du angemeldet bist. Mit diesen beiden Befehlen klonst du das Repo und trägst themis ein:
 
 ```bash
 gh repo clone marin-niehues/themis ~/themis
@@ -30,22 +26,24 @@ gh repo clone marin-niehues/themis ~/themis
 ~/themis/install.sh
 ```
 
-Das Skript trägt themis in `~/.claude/settings.json` ein und legt vorher eine Sicherungskopie der Datei an. Danach eine neue Session starten, die Regeln sind drin.
+Das Skript trägt themis in `~/.claude/settings.json` ein und legt vorher eine Sicherungskopie dieser Datei an. Die Regeln gelten ab der nächsten Session, die du startest.
 
-Der Ordner `~/themis` muss liegen bleiben. Ein `git pull` ist für neue Regeln nicht nötig, weil sie bei jedem Start aus dem Repo geholt werden.
+Der Ordner `~/themis` muss auf deinem Rechner bleiben, weil das Skript darin liegt. Du musst für neue Regeln kein `git pull` ausführen, weil das Skript die Regeln bei jedem Start von GitHub holt.
 
 ## Verhalten
 
-| Zustand | Verhalten |
+| Zustand beim Start | Ergebnis |
 |---|---|
-| RULES.md erreichbar | Regeln gelten, Kopie im Cache |
-| RULES.md leer, gelöscht, Repo weg oder kein Zugriff | Keine Regeln, Cache wird gelöscht |
-| Kein Netz | Letzter Stand aus dem Cache |
-| gh nicht angemeldet | Letzter Stand aus dem Cache, Hinweis in stderr |
+| `RULES.md` ist erreichbar | Die Regeln gelten. Das Skript speichert eine Kopie im Cache. |
+| `RULES.md` ist leer oder gelöscht, das Repo fehlt oder du hast keinen Zugriff | Es gelten keine Regeln. Das Skript löscht den Cache. |
+| Der Rechner ist offline | Die Kopie aus dem Cache gilt. |
+| `gh` ist nicht angemeldet | Die Kopie aus dem Cache gilt. Das Skript gibt einen Hinweis aus. |
 
-Cache: `~/.cache/themis/rules.md`
+Der Cache liegt unter `~/.cache/themis/rules.md`.
 
 ## Deinstallation
+
+Das erste Skript entfernt den Eintrag aus den Einstellungen und löscht den Cache. Der zweite Befehl löscht den Ordner mit dem Repo.
 
 ```bash
 ~/themis/uninstall.sh
@@ -55,19 +53,20 @@ Cache: `~/.cache/themis/rules.md`
 rm -rf ~/themis
 ```
 
-Danach ist nichts mehr da.
+Danach liegt nichts mehr von themis auf deinem Rechner.
 
 ## Für den Betreiber
 
-Die Herleitung der Regeln mit Quellen steht in `docs/katalog.md`.
+Du änderst die Regeln, indem du `RULES.md` bearbeitest und auf `main` pushst. Die Änderung gilt ab der nächsten Session aller Nutzer, ohne dass du eine Version erhöhen musst. Wenn du die Regeln für alle abschalten willst, leerst oder löschst du `RULES.md`.
 
+Änderungen an den Skripten erreichen die Nutzer erst, wenn sie in ihrem Ordner `git pull` ausführen.
 
-- **Regeln ändern:** `RULES.md` bearbeiten und auf `main` pushen. Gilt ab der nächsten Session aller Nutzer. Kein Versionsbump nötig.
-- **Regeln abschalten:** `RULES.md` leeren oder löschen. Oder das Repo privat halten und einzelnen Personen den Zugriff entziehen.
-- **Skripte ändern:** pushen. Nutzer bekommen die Änderung mit `git pull` in ihrem Ordner.
-- **Alternative über das Plugin-System:** Das Repo lässt sich auch mit `/plugin marketplace add marin-niehues/themis` und `/plugin install themis@niehues` einbinden. Nur einen der beiden Wege nutzen, sonst werden die Regeln doppelt geladen.
-- **Abruf von Hand prüfen:**
+Das Repo lässt sich auch über das Plugin-System von Claude Code einbinden. Ein Nutzer verwendet dafür die Befehle `/plugin marketplace add marin-niehues/themis` und `/plugin install themis@niehues`. Er nutzt nur einen der beiden Wege, weil Claude die Regeln sonst doppelt lädt.
 
-```
+Mit diesem Befehl prüfst du von Hand, was das Skript beim Start ausgibt:
+
+```bash
 bash themis/scripts/fetch-rules.sh
 ```
+
+Die Herleitung der Regeln mit Quellen steht in `docs/katalog.md`. Die Recherche zu visuellen Erkennungszeichen steht in `docs/reports`.

@@ -20,5 +20,5 @@ with open(path, "w") as f:
     json.dump(data, f, indent=2, ensure_ascii=False)
     f.write("\n")
 PY
-echo "themis ist eingetragen in $SETTINGS"
-echo "Neue Claude-Code-Session starten, dann gelten die Regeln."
+echo "themis ist in $SETTINGS eingetragen."
+echo "Die Regeln gelten ab der nächsten Claude-Code-Session."

@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<!--
+  Gestelltes Anschauungsbeispiel: Diese Seite enthält absichtlich die Muster,
+  die RULES.md ausschließt. Kennzahlen, Kundenlogos, Bewertungen und Zitate sind erfunden.
+-->
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✨ themis 🚀 Die Zukunft des KI-Schreibens – jetzt! 💜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,800;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root {
+    --radius: 24px;
+    --shadow: 0 20px 60px -15px rgba(124, 58, 237, 0.55), 0 0 40px rgba(99, 102, 241, 0.3);
+    --glass: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --violet: #8b5cf6;
+    --indigo: #6366f1;
+    --blue: #3b82f6;
+    --pink: #ec4899;
+    --cyan: #22d3ee;
+    --neon: #39ff14;
+    --text: #f5f3ff;
+    --muted: #a5a3c9;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    background: #0b0820;
+    background-image:
+      radial-gradient(circle at 15% 5%, rgba(139, 92, 246, 0.6), transparent 40%),
+      radial-gradient(circle at 85% 15%, rgba(59, 130, 246, 0.55), transparent 45%),
+      radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.3), transparent 50%),
+      radial-gradient(circle at 10% 85%, rgba(34, 211, 238, 0.3), transparent 45%),
+      linear-gradient(135deg, #1e1b4b 0%, #312e81 30%, #4c1d95 60%, #1e3a8a 100%);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  .blob {
+    position: fixed; width: 520px; height: 520px; border-radius: 50%;
+    filter: blur(120px); opacity: .55; z-index: -1; pointer-events: none;
+    animation: float 12s ease-in-out infinite alternate;
+  }
+  .blob.a { background: var(--violet); top: -120px; left: -140px; }
+  .blob.b { background: var(--blue); top: 40%; right: -180px; animation-delay: -4s; }
+  .blob.c { background: var(--pink); bottom: -200px; left: 30%; animation-delay: -8s; }
+  @keyframes float { to { transform: translate(60px, 40px) scale(1.15); } }
+
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+  /* Fade-up: Endzustand ist sichtbar, die Animation verschiebt nur */
+  .fade-up { opacity: 1; transform: none; }
+  .fade-up.animate { animation: fadeUp .9s cubic-bezier(.2,.8,.2,1) both; }
+  @keyframes fadeUp { from { transform: translateY(40px); } to { transform: none; } }
+
+  .glass {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+  .glow-border { position: relative; }
+  .glow-border::before {
+    content: ''; position: absolute; inset: -2px; border-radius: inherit; z-index: -1;
+    background: linear-gradient(135deg, var(--violet), var(--blue), var(--pink), var(--cyan));
+    filter: blur(10px); opacity: .7;
+  }
+  .lift { transition: transform .35s ease, box-shadow .35s ease; }
+  .lift:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 30px 80px -10px rgba(139, 92, 246, .8), 0 0 60px rgba(99, 102, 241, .5); }
+
+  .gradient-text {
+    background: linear-gradient(90deg, #c4b5fd, #818cf8, #60a5fa, #f0abfc, #c4b5fd);
+    background-size: 300% 100%;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 6s linear infinite;
+    filter: drop-shadow(0 0 24px rgba(167, 139, 250, .7));
+  }
+  .hl-italic { font-style: italic; color: #f0abfc; text-shadow: 0 0 30px rgba(240, 171, 252, .9); }
+  @keyframes shimmer { to { background-position: 300% 0; } }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 800; letter-spacing: .3em; text-transform: uppercase;
+    color: #c4b5fd; margin-bottom: 16px;
+    padding: 6px 14px; border-radius: 999px; background: rgba(139, 92, 246, .18); border: 1px solid rgba(196,181,253,.35);
+    box-shadow: 0 0 20px rgba(139, 92, 246, .45);
+  }
+  .mono-label { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #a5b4fc; }
+
+  .pill {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 18px; border-radius: 999px;
+    background: linear-gradient(90deg, rgba(139,92,246,.45), rgba(59,130,246,.45));
+    border: 1px solid rgba(196, 181, 253, .6);
+    font-size: 14px; font-weight: 700; color: #ede9fe;
+    box-shadow: 0 0 34px rgba(139, 92, 246, .7);
+    backdrop-filter: blur(12px);
+  }
+  .pill .new { background: linear-gradient(90deg, var(--pink), var(--violet)); padding: 2px 10px; border-radius: 999px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+  .badge {
+    display: inline-block; padding: 3px 10px; border-radius: 999px;
+    font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+    background: linear-gradient(90deg, var(--pink), var(--violet)); color: #fff;
+    vertical-align: middle; margin-left: 8px;
+    box-shadow: 0 0 16px rgba(236, 72, 153, .7);
+    -webkit-text-fill-color: #fff;
+  }
+  .badge.blue { background: linear-gradient(90deg, var(--blue), var(--cyan)); box-shadow: 0 0 16px rgba(59,130,246,.7); }
+  .badge.green { background: linear-gradient(90deg, #10b981, #34d399); box-shadow: 0 0 16px rgba(16,185,129,.7); }
+  .badge.orange { background: linear-gradient(90deg, #f97316, #facc15); box-shadow: 0 0 16px rgba(249,115,22,.7); }
+  .counter-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 22px; height: 22px; padding: 0 6px; border-radius: 999px; background: var(--pink); font-size: 11px; font-weight: 800; margin-left: 6px; box-shadow: 0 0 12px rgba(236,72,153,.8); -webkit-text-fill-color: #fff; color: #fff; vertical-align: middle; }
+
+  .pulse {
+    width: 10px; height: 10px; border-radius: 50%; background: #34d399; position: relative; display: inline-block; flex-shrink: 0;
+    box-shadow: 0 0 12px #34d399;
+  }
+  .pulse::after {
+    content: ''; position: absolute; inset: 0; border-radius: 50%; background: #34d399;
+    animation: pulse 1.6s ease-out infinite;
+  }
+  .pulse.pink { background: var(--pink); box-shadow: 0 0 12px var(--pink); }
+  .pulse.pink::after { background: var(--pink); }
+  @keyframes pulse { to { transform: scale(3); opacity: 0; } }
+
+  .sparkle { display: inline-block; animation: twinkle 2s ease-in-out infinite; }
+  @keyframes twinkle { 50% { transform: scale(1.3) rotate(20deg); filter: drop-shadow(0 0 8px #fde68a); } }
+  .dot { opacity: .6; margin: 0 2px; }
+
+  /* Ankündigungsleiste */
+  .announce { text-align: center; padding: 10px 16px; font-size: 14px; font-weight: 700; background: linear-gradient(90deg, var(--pink), var(--violet), var(--blue), var(--cyan)); box-shadow: 0 0 40px rgba(236,72,153,.6); }
+  .announce a { color: #fff; }
+
+  /* Navigation */
+  nav { position: sticky; top: 16px; z-index: 50; margin: 16px auto 0; max-width: 1180px; padding: 0 24px; }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; gap: 16px; }
+  .logo { font-weight: 900; font-size: 22px; display: flex; align-items: center; gap: 10px; }
+  .logo-mark { width: 36px; height: 36px; border-radius: 12px; background: linear-gradient(135deg, var(--violet), var(--blue)); display: grid; place-items: center; box-shadow: 0 0 24px rgba(139,92,246,.9); }
+  .nav-links { display: flex; gap: 24px; list-style: none; font-size: 15px; font-weight: 600; }
+  .nav-links a { color: var(--muted); text-decoration: none; }
+  .nav-links a:hover { color: #fff; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 16px 30px; border-radius: var(--radius); border: none; cursor: pointer;
+    font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 800; color: #fff; text-decoration: none;
+    box-shadow: var(--shadow), 0 0 30px rgba(139, 92, 246, .6);
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .btn:hover { transform: translateY(-3px) scale(1.05); }
+  .btn-primary { background: linear-gradient(90deg, var(--violet), var(--indigo), var(--blue)); }
+  .btn-secondary { background: linear-gradient(90deg, var(--pink), var(--violet)); }
+  .btn-tertiary { background: linear-gradient(90deg, var(--cyan), var(--blue)); }
+  .btn-sm { padding: 10px 20px; font-size: 14px; }
+  .btn .badge { margin-left: 0; }
+
+  /* Hero */
+  .hero { text-align: center; padding: 90px 0 60px; }
+  .greeting { font-size: 18px; font-weight: 700; color: #e9d5ff; margin-bottom: 18px; }
+  .hero h1 { font-size: clamp(40px, 7vw, 86px); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; margin: 24px auto 24px; max-width: 1000px; text-shadow: 0 0 60px rgba(139, 92, 246, .6); }
+  .hero p.lead { font-size: 21px; color: var(--muted); max-width: 760px; margin: 0 auto 12px; }
+  .typewriter { font-size: 18px; color: #c4b5fd; font-weight: 700; margin-top: 10px; }
+  .hero-buttons { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin-top: 36px; }
+  .hero-meta { margin-top: 26px; font-size: 14px; color: var(--muted); display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .reassure { margin-top: 14px; font-size: 14px; color: #c4b5fd; }
+  .social-proof { margin-top: 26px; display: inline-flex; align-items: center; gap: 14px; padding: 10px 18px 10px 10px; flex-wrap: wrap; justify-content: center; }
+  .avatars { display: flex; }
+  .avatars span { width: 36px; height: 36px; border-radius: 50%; border: 2px solid #1e1b4b; margin-left: -10px; display: grid; place-items: center; font-size: 16px; background: linear-gradient(135deg, var(--pink), var(--violet)); }
+  .avatars span:first-child { margin-left: 0; }
+  .stars { color: #fbbf24; text-shadow: 0 0 12px rgba(251,191,36,.8); letter-spacing: 2px; }
+
+  /* Browserfenster */
+  .browser-wrap { position: relative; max-width: 960px; margin: 70px auto 0; }
+  .browser { overflow: hidden; text-align: left; }
+  .browser-bar { display: flex; align-items: center; gap: 8px; padding: 14px 18px; border-bottom: 1px solid var(--glass-border); background: rgba(255,255,255,.05); }
+  .browser-bar span.d { width: 13px; height: 13px; border-radius: 50%; }
+  .browser-bar .r { background: #ff5f57; } .browser-bar .y { background: #febc2e; } .browser-bar .g { background: #28c840; }
+  .browser-url { margin-left: 18px; flex: 1; padding: 6px 14px; border-radius: 999px; background: rgba(0,0,0,.3); font-size: 13px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .browser-body { padding: 28px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; }
+  .terminal { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 15px; line-height: 1.9; padding: 20px; background: rgba(0,0,0,.25); }
+  .terminal .c { color: #6ee7b7; } .terminal .p { color: #f0abfc; } .terminal .k { color: #93c5fd; } .terminal .m { color: var(--muted); }
+  .caret { display: inline-block; width: 9px; height: 18px; background: #c4b5fd; vertical-align: middle; animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .side-cards { display: flex; flex-direction: column; gap: 14px; }
+  .mini { padding: 16px; }
+  .mini .big { font-size: 30px; font-weight: 900; }
+  .mini .inner { margin-top: 10px; padding: 12px; font-size: 13px; }
+  .mini .inner .inner { margin-top: 8px; padding: 10px; font-size: 12px; }
+  .progress-wrap { margin-top: 16px; font-family: 'Inter', sans-serif; font-size: 13px; color: var(--muted); }
+  .progress { height: 8px; border-radius: 999px; background: rgba(255,255,255,.1); overflow: hidden; margin-top: 6px; }
+  .progress > div { height: 100%; width: 87%; background: linear-gradient(90deg, var(--violet), var(--cyan)); box-shadow: 0 0 12px var(--cyan); }
+  .float-card { position: absolute; padding: 14px 18px; font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 10px; animation: bob 4s ease-in-out infinite alternate; }
+  .float-card.one { top: -30px; left: -40px; }
+  .float-card.two { bottom: -28px; right: -36px; animation-delay: -2s; }
+  @keyframes bob { to { transform: translateY(-12px); } }
+
+  /* Logos */
+  .logos { padding: 70px 0 30px; text-align: center; }
+  .logos p { color: var(--muted); font-size: 13px; letter-spacing: .25em; text-transform: uppercase; font-weight: 800; margin-bottom: 28px; }
+  .marquee { overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent); }
+  .logo-row { display: flex; gap: 56px; width: max-content; font-size: 22px; font-weight: 900; opacity: .8; animation: marquee 30s linear infinite; }
+  .logo-row span { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+
+  section { padding: 90px 0; }
+  .section-head { text-align: center; max-width: 780px; margin: 0 auto 56px; }
+  .section-head h2 { font-size: clamp(32px, 4.5vw, 54px); font-weight: 900; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 18px; }
+  .section-head p { color: var(--muted); font-size: 18px; margin-bottom: 6px; }
+  .section-head .sub { font-size: 13px; margin-top: 10px; color: #a5b4fc; }
+
+  /* Kennzahlen */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; padding: 40px; }
+  .stat { text-align: center; padding: 10px; border-right: 1px solid var(--glass-border); }
+  .stat:last-child { border-right: none; }
+  .stat .emoji { font-size: 30px; }
+  .stat .num { font-size: 46px; font-weight: 900; }
+  .stat .label { font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); font-weight: 800; }
+  .trend { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; color: #34d399; font-weight: 800; margin-top: 6px; }
+  .spark { display: block; margin: 8px auto 0; }
+  .stats-note { text-align: center; font-size: 12px; color: rgba(255,255,255,.4); margin-top: 14px; }
+
+  /* Features */
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .feature { padding: 34px; position: relative; overflow: hidden; border-left: 5px solid var(--violet); }
+  .feature:nth-child(3n+2) { border-left-color: var(--blue); }
+  .feature:nth-child(3n) { border-left-color: var(--pink); }
+  .feature .num-deco { position: absolute; top: 14px; right: 22px; font-size: 64px; font-weight: 900; color: rgba(255,255,255,.08); }
+  .icon-tile { width: 60px; height: 60px; border-radius: 18px; display: grid; place-items: center; font-size: 26px; background: linear-gradient(135deg, rgba(139,92,246,.45), rgba(59,130,246,.45)); box-shadow: 0 0 30px rgba(139,92,246,.7); margin-bottom: 22px; }
+  .feature h3 { font-size: 21px; font-weight: 900; margin-bottom: 12px; }
+  .feature p { color: var(--muted); font-size: 16px; margin-bottom: 12px; }
+  .inner-card { margin-top: 16px; padding: 16px; }
+  .inner-card .inner-card { margin-top: 10px; padding: 12px; font-size: 14px; }
+  .inner-card .mono-label { display: block; margin-bottom: 6px; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+  .tag { font-size: 11px; padding: 3px 10px; border-radius: 999px; background: rgba(255,255,255,.1); color: #c7d2fe; }
+  .meta-line { font-size: 12px; color: rgba(255,255,255,.4); margin-top: 12px; }
+  .link-arrow { color: #c4b5fd; font-weight: 800; text-decoration: none; display: inline-flex; gap: 6px; align-items: center; margin-top: 10px; }
+
+  /* Neon-Bereich */
+  .neon { background: #050505; border-radius: var(--radius); border: 1px solid var(--neon); box-shadow: 0 0 40px rgba(57,255,20,.45), inset 0 0 40px rgba(57,255,20,.15); padding: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+  .neon h2 { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: clamp(26px, 3.6vw, 40px); color: var(--neon); text-shadow: 0 0 20px var(--neon); text-transform: uppercase; letter-spacing: .06em; line-height: 1.2; margin-bottom: 18px; }
+  .neon p { color: #b6b6b6; margin-bottom: 12px; }
+  .neon .eyebrow { color: var(--neon); background: rgba(57,255,20,.1); border-color: rgba(57,255,20,.5); box-shadow: 0 0 20px rgba(57,255,20,.4); }
+  .neon-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .neon-list li { padding: 14px 18px; border: 1px solid rgba(57,255,20,.4); border-radius: var(--radius); color: #e5e5e5; box-shadow: 0 0 16px rgba(57,255,20,.25); display: flex; align-items: center; gap: 12px; }
+  .neon-list li i { color: var(--neon); }
+  .btn-neon { background: var(--neon); color: #050505; box-shadow: 0 0 30px var(--neon); margin-top: 14px; }
+
+  /* Schritte */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .step { padding: 32px; border-top: 5px solid var(--cyan); }
+  .step .n { font-size: 54px; font-weight: 900; line-height: 1; margin-bottom: 14px; }
+  .step h3 { font-size: 20px; font-weight: 900; margin-bottom: 10px; }
+  .step p { color: var(--muted); margin-bottom: 10px; }
+
+  /* Manifest: Creme mit Terrakotta */
+  .manifest { background: #f6efe4; color: #3b2a20; border-radius: var(--radius); box-shadow: var(--shadow); padding: 64px; border-left: 8px solid #c2603c; }
+  .manifest .eyebrow { color: #c2603c; background: rgba(194,96,60,.1); border-color: rgba(194,96,60,.4); box-shadow: none; }
+  .manifest h2 { font-size: clamp(30px, 4.5vw, 52px); font-weight: 900; font-style: italic; line-height: 1.1; margin-bottom: 26px; }
+  .manifest h2 em { color: #c2603c; }
+  .manifest p { font-size: 20px; margin-bottom: 16px; }
+  .manifest p.quiet { color: #b8a898; font-size: 14px; }
+  .manifest strong { color: #c2603c; }
+
+  /* Vergleich */
+  .compare { width: 100%; border-collapse: separate; border-spacing: 0; overflow: hidden; }
+  .compare th { font-size: 12px; letter-spacing: .25em; text-transform: uppercase; color: #c4b5fd; padding: 18px; text-align: left; background: rgba(139,92,246,.2); }
+  .compare td { padding: 16px 18px; border-top: 1px solid var(--glass-border); font-size: 15px; }
+  .compare td:first-child { font-weight: 700; }
+  .compare tr:hover td { background: rgba(255,255,255,.05); }
+  .table-wrap { overflow-x: auto; }
+
+  /* Preise */
+  .pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; align-items: stretch; }
+  .plan { padding: 36px; position: relative; display: flex; flex-direction: column; }
+  .plan.pop { transform: scale(1.05); border: 2px solid #c4b5fd; }
+  .plan .ribbon { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); white-space: nowrap; }
+  .plan h3 { font-size: 22px; font-weight: 900; margin-bottom: 8px; }
+  .plan .price { font-size: 52px; font-weight: 900; margin: 10px 0; }
+  .plan .price small { font-size: 16px; color: var(--muted); font-weight: 600; }
+  .plan .old { text-decoration: line-through; color: rgba(255,255,255,.35); font-size: 18px; margin-left: 8px; }
+  .plan ul { list-style: none; margin: 18px 0 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .plan li { font-size: 15px; }
+  .plan .btn { justify-content: center; }
+
+  /* Testimonials */
+  .testimonials { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .quote { padding: 30px; }
+  .quote .stars { font-size: 18px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+  .quote blockquote { font-size: 16px; margin-bottom: 20px; }
+  .person { display: flex; align-items: center; gap: 14px; }
+  .avatar { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; font-weight: 900; background: linear-gradient(135deg, var(--pink), var(--violet)); box-shadow: 0 0 20px rgba(236,72,153,.7); flex-shrink: 0; }
+  .person small { color: var(--muted); display: block; }
+  .verified { color: #34d399; font-size: 12px; font-weight: 700; }
+  .carousel-dots { display: flex; gap: 10px; justify-content: center; margin-top: 30px; align-items: center; }
+  .carousel-dots span { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.3); }
+  .carousel-dots span.on { width: 28px; border-radius: 999px; background: linear-gradient(90deg, var(--violet), var(--blue)); box-shadow: 0 0 12px var(--violet); }
+  .carousel-dots button { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--glass-border); background: var(--glass); color: #fff; cursor: pointer; box-shadow: var(--shadow); }
+  .rating-summary { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; margin-bottom: 40px; }
+  .rating-summary .glass { padding: 14px 22px; font-weight: 700; display: flex; gap: 10px; align-items: center; }
+
+  /* FAQ */
+  .faq { max-width: 840px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+  .faq details { padding: 22px 28px; border-left: 5px solid var(--violet); }
+  .faq summary { cursor: pointer; font-weight: 800; font-size: 18px; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; font-size: 26px; color: #c4b5fd; transition: transform .3s; }
+  .faq details[open] summary::after { transform: rotate(45deg); }
+  .faq details p { color: var(--muted); margin-top: 14px; }
+
+  /* CTA */
+  .cta { text-align: center; padding: 80px 40px; position: relative; overflow: hidden; isolation: isolate; }
+  .cta::before { content: ''; position: absolute; inset: -50%; background: conic-gradient(from 0deg, transparent, rgba(139,92,246,.45), transparent 30%, rgba(236,72,153,.35), transparent 60%); animation: spin 8s linear infinite; z-index: -1; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .cta h2 { font-size: clamp(32px, 5vw, 58px); font-weight: 900; margin-bottom: 18px; letter-spacing: -0.02em; line-height: 1.1; }
+  .cta p { color: var(--muted); font-size: 18px; max-width: 640px; margin: 0 auto 10px; }
+  .newsletter { display: flex; gap: 12px; justify-content: center; margin-top: 34px; flex-wrap: wrap; }
+  .newsletter input { padding: 16px 22px; border-radius: var(--radius); border: 1px solid var(--glass-border); background: rgba(255,255,255,.08); color: #fff; font-family: 'Inter', sans-serif; font-size: 16px; min-width: 320px; box-shadow: var(--shadow); }
+  .newsletter input::placeholder { color: rgba(255,255,255,.3); }
+  .hint { font-size: 12px; color: rgba(255,255,255,.38); margin-top: 10px; }
+  .toast { margin-top: 16px; font-weight: 800; color: #6ee7b7; min-height: 24px; }
+
+  /* Footer */
+  footer { padding: 80px 0 40px; margin-top: 60px; border-top: 1px solid var(--glass-border); background: rgba(10, 6, 30, .5); backdrop-filter: blur(20px); }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; }
+  .footer-grid h4 { font-size: 12px; letter-spacing: .28em; text-transform: uppercase; color: #c4b5fd; margin-bottom: 18px; }
+  .footer-grid ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-grid a { color: var(--muted); text-decoration: none; font-size: 15px; }
+  .footer-grid a:hover { color: #fff; }
+  .socials { display: flex; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
+  .socials a { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; background: var(--glass); border: 1px solid var(--glass-border); color: #e0e7ff; box-shadow: 0 0 20px rgba(139,92,246,.5); font-size: 18px; transition: transform .25s; }
+  .socials a:hover { transform: translateY(-4px) scale(1.1); }
+  .footer-bottom { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--glass-border); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+  .footer-bottom .sep { margin: 0 8px; opacity: .5; }
+
+  @media (max-width: 900px) {
+    .features, .steps, .testimonials, .pricing { grid-template-columns: 1fr; }
+    .plan.pop { transform: none; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .stat:nth-child(2) { border-right: none; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+    .neon { grid-template-columns: 1fr; padding: 36px 24px; }
+    .browser-body { grid-template-columns: 1fr; }
+    .float-card.one { left: 8px; } .float-card.two { right: 8px; }
+  }
+  @media (max-width: 520px) {
+    .container, nav { padding: 0 16px; }
+    .hero { padding-top: 60px; }
+    .stats { grid-template-columns: 1fr; padding: 24px; }
+    .stat { border-right: none; border-bottom: 1px solid var(--glass-border); }
+    .stat:last-child { border-bottom: none; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .newsletter input { min-width: 0; width: 100%; }
+    .manifest { padding: 36px 24px; }
+    .browser-body { padding: 14px; }
+    .terminal { font-size: 11px; padding: 14px; overflow-x: auto; }
+    .nav-inner .btn { display: none; }
+    .float-card { position: static; margin: 12px auto 0; width: fit-content; }
+    .btn { padding: 14px 22px; }
+    .cta { padding: 56px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="blob a"></div>
+<div class="blob b"></div>
+<div class="blob c"></div>
+
+<div class="announce">🔥 Limitiertes Angebot <span class="dot">·</span> Nur heute <span class="dot">·</span> 🎁 Pro für 0 € <span class="dot">·</span> <a href="#preise">Jetzt sichern →</a> 🚀</div>
+
+<nav>
+  <div class="nav-inner glass glow-border">
+    <div class="logo"><span class="logo-mark">⚖️</span> themis <span class="badge">Beta</span><span class="badge blue">v2.0</span></div>
+    <ul class="nav-links">
+      <li><a href="#features">✨ Features<span class="counter-badge">6</span></a></li>
+      <li><a href="#so-gehts">🚀 So geht's</a></li>
+      <li><a href="#preise">💎 Preise<span class="badge green">-100 %</span></a></li>
+      <li><a href="#stimmen">💬 Stimmen<span class="counter-badge">12</span></a></li>
+      <li><a href="#faq">❓ FAQ</a></li>
+    </ul>
+    <a href="#start" class="btn btn-primary btn-sm">🚀 Jetzt starten <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+</nav>
+
+<header class="hero container">
+  <p class="greeting fade-up">👋 Hallo und herzlich willkommen bei themis! Schön, dass du da bist! 💜</p>
+  <div class="fade-up">
+    <span class="pill"><span class="pulse"></span><span class="new">Neu</span> ✨ Neu: Jetzt mit KI <span class="sparkle">🪄</span> <i class="fa-solid fa-arrow-right"></i></span>
+  </div>
+  <div class="fade-up" style="margin-top:28px"><span class="eyebrow"><span class="sparkle">✦</span> Das Plugin für Claude Code <span class="dot">·</span> Powered by KI <span class="sparkle">✦</span></span></div>
+  <h1 class="fade-up">✨ Schreiben auf dem <span class="gradient-text">nächsten Level</span> – <span class="hl-italic">mühelos</span>, menschlich, magisch 🚀</h1>
+  <p class="lead fade-up">In der heutigen schnelllebigen Welt zählt jedes Wort – wirklich jedes.</p>
+  <p class="lead fade-up">Nicht mehr KI-Floskeln. Sondern echte, menschliche Texte – nahtlos, ganzheitlich, mühelos.</p>
+  <p class="lead fade-up">Kein Gedankenstrich. Kein Marketing-Sprech. Nur Klarheit.</p>
+  <p class="typewriter fade-up"><span id="typed">Lass uns gemeinsam eintauchen – in die spannende Landschaft des KI-freien Schreibens.</span><span class="caret"></span></p>
+  <div class="hero-buttons fade-up">
+    <a href="#start" class="btn btn-primary">🚀 Kostenlos loslegen <span class="badge green">Gratis</span> <i class="fa-solid fa-arrow-right"></i></a>
+    <a href="#features" class="btn btn-secondary">🎬 Demo ansehen <span class="badge orange">2 Min.</span> <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+  <div class="hero-meta fade-up">
+    <span>⚡ In 30 Sekunden installiert</span><span class="dot">·</span>
+    <span>🔒 100 % sicher</span><span class="dot">·</span>
+    <span>💜 Open Source</span><span class="dot">·</span>
+    <span>🌍 Weltweit genutzt</span><span class="dot">·</span>
+    <span>🏆 Preisgekrönt</span>
+  </div>
+  <p class="reassure fade-up">✅ Keine Sorge – du kannst jederzeit aufhören. ✅ Keine Kreditkarte nötig. ✅ Kein Risiko. ✅ Keine versteckten Kosten.</p>
+  <div class="fade-up">
+    <div class="social-proof glass">
+      <div class="avatars"><span>👩‍💻</span><span>👨‍💻</span><span>🧑‍🚀</span><span>👩‍🎨</span><span>🦄</span></div>
+      <span class="stars">★★★★★</span>
+      <strong>4,9/5</strong>
+      <span style="color:var(--muted);font-size:14px">aus 2.847 Bewertungen <span class="dot">·</span> +10.000 Entwickler 🎉</span>
+    </div>
+  </div>
+
+  <div class="browser-wrap fade-up">
+    <div class="float-card one glass glow-border"><span class="pulse"></span> 🎯 +98 % Klarheit <span class="badge green">Live</span></div>
+    <div class="browser glass glow-border">
+      <div class="browser-bar">
+        <span class="d r"></span><span class="d y"></span><span class="d g"></span>
+        <div class="browser-url">🔒 https://themis.ai/dashboard/terminal?ref=hero ✨</div>
+        <span class="badge blue">Live</span>
+      </div>
+      <div class="browser-body">
+        <div class="terminal glass">
+          <div><span class="p">~ $</span> <span class="k">gh repo clone</span> marin-niehues/themis ~/themis</div>
+          <div><span class="p">~ $</span> <span class="k">~/themis/install.sh</span></div>
+          <div class="c">✔ Regeldatei aus GitHub geladen 🎉</div>
+          <div class="c">✔ Session-Hook registriert 🚀</div>
+          <div class="m">// Claude schreibt jetzt ohne KI-Muster ✨</div>
+          <div><span class="p">~ $</span> claude<span class="caret"></span></div>
+          <div class="progress-wrap">
+            ⚙️ Regeln werden angewendet … <strong>87 %</strong>
+            <div class="progress"><div></div></div>
+          </div>
+        </div>
+        <div class="side-cards">
+          <div class="mini glass">
+            <span class="mono-label">📊 Textqualität</span>
+            <div class="big gradient-text">+312 %</div>
+            <div class="inner glass">
+              <span class="mono-label">🔥 Trend</span> <span class="trend"><i class="fa-solid fa-arrow-trend-up"></i> +48 % diese Woche</span>
+              <div class="inner glass"><span class="mono-label">⏱ Zuletzt</span> vor 2 Sek. <span class="dot">·</span> ID #A7F3</div>
+            </div>
+          </div>
+          <div class="mini glass">
+            <span class="mono-label">🧠 KI-Status</span>
+            <div style="display:flex;align-items:center;gap:10px;margin-top:6px;font-weight:800"><span class="pulse"></span> Aktiv <span class="badge">Pro</span></div>
+            <div class="inner glass">🪄 1.284 Floskeln heute entfernt <span class="badge green">+24</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="float-card two glass glow-border">🏆 Produkt des Tages <span class="badge orange">#1</span></div>
+  </div>
+</header>
+
+<div class="logos container fade-up">
+  <p>🤝 Vertraut von über 10.000 Teams weltweit <span class="dot">·</span> darunter</p>
+  <div class="marquee">
+    <div class="logo-row">
+      <span><i class="fa-solid fa-cube"></i> Nexora</span>
+      <span><i class="fa-solid fa-bolt"></i> Voltix</span>
+      <span><i class="fa-solid fa-leaf"></i> Greenly</span>
+      <span><i class="fa-solid fa-infinity"></i> Loopwise</span>
+      <span><i class="fa-solid fa-rocket"></i> Skyward</span>
+      <span><i class="fa-solid fa-gem"></i> Prismo</span>
+      <span><i class="fa-solid fa-feather"></i> Quillon</span>
+      <span><i class="fa-solid fa-cube"></i> Nexora</span>
+      <span><i class="fa-solid fa-bolt"></i> Voltix</span>
+      <span><i class="fa-solid fa-leaf"></i> Greenly</span>
+      <span><i class="fa-solid fa-infinity"></i> Loopwise</span>
+      <span><i class="fa-solid fa-rocket"></i> Skyward</span>
+      <span><i class="fa-solid fa-gem"></i> Prismo</span>
+      <span><i class="fa-solid fa-feather"></i> Quillon</span>
+    </div>
+  </div>
+</div>
+
+<section class="container" style="padding-top:40px">
+  <div class="section-head fade-up" style="margin-bottom:36px">
+    <span class="eyebrow">📈 Zahlen, die überzeugen</span>
+    <h2>Die Zahlen <span class="gradient-text">sprechen für sich</span><span class="badge">Live</span></h2>
+    <p>Zahlen, die für sich sprechen.</p>
+  </div>
+  <div class="stats glass glow-border fade-up">
+    <div class="stat">
+      <div class="emoji">👩‍💻</div>
+      <div class="num gradient-text"><span class="count" data-target="10000">10.000</span>+</div>
+      <div class="label">Entwickler</div>
+      <div class="trend"><i class="fa-solid fa-arrow-trend-up"></i> +312 %</div>
+      <svg class="spark" width="90" height="24" viewBox="0 0 90 24"><polyline fill="none" stroke="#34d399" stroke-width="2" points="0,20 15,16 30,18 45,10 60,12 75,5 90,2"/></svg>
+    </div>
+    <div class="stat">
+      <div class="emoji">😍</div>
+      <div class="num gradient-text"><span class="count" data-target="99">99</span> %</div>
+      <div class="label">Zufriedenheit</div>
+      <div class="trend"><i class="fa-solid fa-arrow-trend-up"></i> +12 %</div>
+      <svg class="spark" width="90" height="24" viewBox="0 0 90 24"><polyline fill="none" stroke="#34d399" stroke-width="2" points="0,18 15,17 30,12 45,14 60,8 75,6 90,3"/></svg>
+    </div>
+    <div class="stat">
+      <div class="emoji">⚡</div>
+      <div class="num gradient-text"><span class="count" data-target="5">5</span>x</div>
+      <div class="label">Schneller</div>
+      <div class="trend"><i class="fa-solid fa-arrow-trend-up"></i> +400 %</div>
+      <svg class="spark" width="90" height="24" viewBox="0 0 90 24"><polyline fill="none" stroke="#34d399" stroke-width="2" points="0,22 15,20 30,15 45,16 60,9 75,7 90,1"/></svg>
+    </div>
+    <div class="stat">
+      <div class="emoji">✍️</div>
+      <div class="num gradient-text"><span class="count" data-target="1000000">1.000.000</span>+</div>
+      <div class="label">Bessere Sätze</div>
+      <div class="trend"><i class="fa-solid fa-arrow-trend-up"></i> +870 %</div>
+      <svg class="spark" width="90" height="24" viewBox="0 0 90 24"><polyline fill="none" stroke="#34d399" stroke-width="2" points="0,21 15,19 30,16 45,11 60,10 75,4 90,2"/></svg>
+    </div>
+  </div>
+  <p class="stats-note fade-up">*Studien zeigen, dass diese Zahlen möglicherweise realistisch sein könnten.</p>
+</section>
+
+<section id="features" class="container">
+  <div class="section-head fade-up">
+    <span class="eyebrow"><span class="sparkle">✨</span> Features <span class="counter-badge">6</span></span>
+    <h2>🧩 Alles, was du brauchst. <span class="gradient-text">Und noch mehr.</span><span class="badge">Neu</span></h2>
+    <p>Seien wir ehrlich: KI-Texte erkennt man sofort. Genau deshalb gibt es themis.</p>
+    <p class="sub">📖 In diesem Abschnitt erfährst du alles über die sechs wichtigsten Features <span class="dot">·</span> Lesezeit: 2 Min. <span class="dot">·</span> 14 Quellen <span class="dot">·</span> vollständig und aktuell</p>
+  </div>
+  <div class="features">
+    <div class="feature glass lift fade-up">
+      <span class="num-deco">01</span>
+      <div class="icon-tile">🧠</div>
+      <h3>Intelligente Regeln <span class="badge blue">KI</span><span class="sparkle">✨</span></h3>
+      <p>Die smarteste Regeldatei der Welt – leise im Hintergrund, wirklich zuverlässig, und das bei jedem Session-Start.</p>
+      <p>Geladen wird automatisch.</p>
+      <div class="inner-card glass">
+        <span class="mono-label">💡 Tipp</span>
+        Die Regeln werden automatisch geladen, damit du nichts tun musst.
+        <div class="inner-card glass"><span class="mono-label">ℹ️ Hinweis</span> Keine Sorge, das passiert ganz von selbst.</div>
+      </div>
+      <div class="tags"><span class="tag">#ki</span><span class="tag">#regeln</span><span class="tag">#automatisch</span></div>
+      <div class="meta-line">ID: FEAT-001 <span class="dot">·</span> Aktualisiert vor 3 Min. <span class="dot">·</span> 2 Min. Lesezeit</div>
+      <a href="#" class="link-arrow">Mehr erfahren <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="feature glass lift fade-up">
+      <span class="num-deco">02</span>
+      <div class="icon-tile">⚡</div>
+      <h3>Blitzschnell <span class="badge">Pro</span><span class="badge orange">🔥 Hot</span></h3>
+      <p>Schnell, schlank, und stark. Die Regeldatei trägt die gesamte Lösung, was die Wichtigkeit von klarer Sprache unterstreicht.</p>
+      <p>Gespeichert wird automatisch.</p>
+      <div class="inner-card glass">
+        <span class="mono-label">⏱ Dauer</span>
+        Unter 50 ms – am schnellsten auf dem Markt.
+        <div class="inner-card glass"><span class="mono-label">📊 Benchmark</span> 99,9 % schneller als alles andere <span class="trend"><i class="fa-solid fa-arrow-up"></i></span></div>
+      </div>
+      <div class="tags"><span class="tag">#speed</span><span class="tag">#performance</span><span class="tag">#fast</span></div>
+      <div class="meta-line">ID: FEAT-002 <span class="dot">·</span> Aktualisiert vor 5 Min. <span class="dot">·</span> v2.4.1</div>
+      <a href="#" class="link-arrow">Mehr erfahren <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="feature glass lift fade-up">
+      <span class="num-deco">03</span>
+      <div class="icon-tile">🤝</div>
+      <h3>Für dein ganzes Team <span class="badge blue">Team</span><span class="counter-badge">3</span></h3>
+      <p>Eine gemeinsame Regeldatei fungiert als Single Source of Truth und stellt das Herzstück deines Workflows dar. Ein echter Game-Changer.</p>
+      <p>Synchronisiert wird nahtlos.</p>
+      <div class="inner-card glass">
+        <span class="mono-label">🔄 Sync</span>
+        Alle im Team navigieren durch dieselbe Regel-Landschaft.
+        <div class="inner-card glass"><span class="mono-label">👥 Mitglieder</span> <span class="pulse"></span> 3 online <span class="dot">·</span> 12 gesamt</div>
+      </div>
+      <div class="tags"><span class="tag">#team</span><span class="tag">#sync</span><span class="tag">#github</span></div>
+      <div class="meta-line">ID: FEAT-003 <span class="dot">·</span> Aktualisiert vor 1 Std. <span class="dot">·</span> 3 Mitwirkende</div>
+      <a href="#" class="link-arrow">Mehr erfahren <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="feature glass lift fade-up">
+      <span class="num-deco">04</span>
+      <div class="icon-tile">🛡️</div>
+      <h3>Enterprise-ready <span class="badge green">Sicher</span></h3>
+      <p>Darüber hinaus dient themis als Schutzschild für deine Marke. Es ist wichtig zu betonen, dass Sicherheit eine entscheidende Rolle spielt.</p>
+      <p>Geprüft wird ganzheitlich.</p>
+      <div class="inner-card glass"><span class="mono-label">🔐 Zertifikat</span> Höchste Sicherheitsstufe <span class="badge">A+</span></div>
+      <div class="meta-line">ID: FEAT-004 <span class="dot">·</span> SOC-ready <span class="dot">·</span> ISO-ready</div>
+      <a href="#" class="link-arrow">Mehr erfahren <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="feature glass lift fade-up">
+      <span class="num-deco">05</span>
+      <div class="icon-tile">🌍</div>
+      <h3>Überall einsetzbar <span class="badge blue">Global</span></h3>
+      <p>Ob Chat, Code oder Commit – themis ist tatsächlich überall dabei. Und das ist erst der Anfang.</p>
+      <p>Unterstützt wird alles.</p>
+      <div class="inner-card glass"><span class="mono-label">🗣 Sprachen</span> 🇩🇪 🇬🇧 🇫🇷 🇪🇸 🇮🇹 +40</div>
+      <div class="meta-line">ID: FEAT-005 <span class="dot">·</span> 42 Sprachen <span class="dot">·</span> 180 Länder</div>
+      <a href="#" class="link-arrow">Mehr erfahren <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="feature glass lift fade-up">
+      <span class="num-deco">06</span>
+      <div class="icon-tile">🪄</div>
+      <h3>Magische Updates <span class="badge orange">Auto</span><span class="sparkle">✨</span></h3>
+      <p>Die Regeln aktualisieren sich bei jedem Start – ein echter Meilenstein, der die Art, wie wir schreiben, für immer verändert.</p>
+      <p>Aktualisiert wird im Hintergrund.</p>
+      <div class="inner-card glass">
+        <span class="mono-label">🔄 Update-Status</span>
+        <div class="progress"><div style="width:64%"></div></div>
+        <span style="font-size:12px;color:var(--muted)">64 % abgeschlossen <span class="dot">·</span> noch ca. 3 Sek.</span>
+      </div>
+      <div class="meta-line">ID: FEAT-006 <span class="dot">·</span> Letztes Update vor 12 Sek.</div>
+      <a href="#" class="link-arrow">Mehr erfahren <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <div class="neon fade-up">
+    <div>
+      <span class="eyebrow"><span class="pulse"></span> Pro-Modus <span class="dot">·</span> Beta</span>
+      <h2>&gt; Hack the Prose_ ⚡</h2>
+      <p>Für echte Profis. Für echte Ergebnisse. Für echte Texte.</p>
+      <p>Was mich überrascht hat: Der Pro-Modus hebt dein Schreiben tatsächlich auf das nächste Level.</p>
+      <a href="#preise" class="btn btn-neon">⚡ Pro freischalten <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <ul class="neon-list">
+      <li><i class="fa-solid fa-terminal"></i> 🚀 Ultra-Turbo-Regeln <span class="badge green">Neu</span></li>
+      <li><i class="fa-solid fa-microchip"></i> 🧠 KI-gestützte KI-Erkennung <span class="badge blue">KI</span></li>
+      <li><i class="fa-solid fa-bolt"></i> ⚡ 10x mehr Klarheit <span class="badge orange">Hot</span></li>
+      <li><i class="fa-solid fa-shield-halved"></i> 🔒 Militärische Präzision <span class="badge">Pro</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="so-gehts" class="container">
+  <div class="section-head fade-up">
+    <span class="eyebrow"><span class="pulse"></span> So einfach geht's</span>
+    <h2>🎯 In <span class="gradient-text">drei Schritten</span> zum perfekten Text<span class="badge green">Easy</span></h2>
+    <p>So einfach geht's – in drei einfachen Schritten.</p>
+    <p class="sub">👇 Unten siehst du die drei Schritte, die du brauchst.</p>
+  </div>
+  <div class="steps">
+    <div class="step glass lift fade-up">
+      <div class="n gradient-text">01</div>
+      <h3>📥 Klonen <span class="badge blue">5 Sek.</span></h3>
+      <p>Klone das Repository mit einem einzigen Befehl. Einfach, schnell und sicher.</p>
+      <div class="inner-card glass"><span class="mono-label">💻 Befehl</span> <code>gh repo clone marin-niehues/themis ~/themis</code></div>
+    </div>
+    <div class="step glass lift fade-up">
+      <div class="n gradient-text">02</div>
+      <h3>⚙️ Installieren <span class="badge blue">10 Sek.</span></h3>
+      <p>Führe das Installationsskript aus.</p>
+      <p>Und das war's auch schon.</p>
+      <div class="inner-card glass"><span class="mono-label">💻 Befehl</span> <code>~/themis/install.sh</code></div>
+    </div>
+    <div class="step glass lift fade-up">
+      <div class="n gradient-text">03</div>
+      <h3>🎉 Genießen <span class="badge green">∞</span></h3>
+      <p>Lehn dich zurück und tauche ein in eine Welt ohne KI-Floskeln.</p>
+      <p>Die Möglichkeiten sind grenzenlos.</p>
+      <div class="inner-card glass"><span class="mono-label">✨ Ergebnis</span> Perfekte Texte. Immer. Überall.</div>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <div class="manifest fade-up">
+    <span class="eyebrow">📜 Unser Manifest</span>
+    <h2>Die Wahrheit ist: <em>Sprache</em> verdient mehr.</h2>
+    <p>Stell dir eine Welt vor, in der deine KI schreibt wie ein Mensch.</p>
+    <p>Klingt zu schön, um wahr zu sein?</p>
+    <p>Ist es nicht.</p>
+    <p>Studien zeigen, dass KI-Texte Leser verunsichern. Experten sagen, dass klare Sprache am Ende des Tages möglicherweise den Unterschied machen könnte.</p>
+    <p>Die eigentliche Frage ist: Wie lange willst du noch warten?</p>
+    <p><strong>Das ist kein Plugin. Das ist eine Revolution.</strong></p>
+    <p>Und genau das macht Sinn.</p>
+    <p>Das verändert alles.</p>
+    <p class="quiet">Die Gewährleistung der Optimierung der Textqualität wird durch die Durchführung der Regelanwendung sichergestellt.</p>
+  </div>
+</section>
+
+<section class="container">
+  <div class="section-head fade-up">
+    <span class="eyebrow">⚔️ Vergleich</span>
+    <h2>themis vs. <span class="gradient-text">der Rest</span><span class="badge orange">🏆 Sieger</span></h2>
+    <p>Ein Vergleich, der keine Fragen offenlässt.</p>
+  </div>
+  <div class="table-wrap glass glow-border fade-up">
+    <table class="compare">
+      <thead><tr><th>✨ Feature</th><th>⚖️ themis</th><th>😐 Andere</th><th>🤖 Ohne</th></tr></thead>
+      <tbody>
+        <tr><td>🧠 KI-freie Texte</td><td>✅ Ja <span class="badge green">Best</span></td><td>❌ Nein</td><td>❌ Nein</td></tr>
+        <tr><td>⚡ Geschwindigkeit</td><td>✅ Blitzschnell</td><td>⚠️ Langsam</td><td>❌ Nein</td></tr>
+        <tr><td>🤝 Team-Sync</td><td>✅ Nahtlos</td><td>⚠️ Teilweise</td><td>❌ Nein</td></tr>
+        <tr><td>💜 Liebe zum Detail</td><td>✅ Unendlich</td><td>❌ Nein</td><td>❌ Nein</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="preise" class="container">
+  <div class="section-head fade-up">
+    <span class="eyebrow">💎 Preise <span class="dot">·</span> Transparent</span>
+    <h2>Ein Preis, der <span class="gradient-text">begeistert</span><span class="badge green">-100 %</span></h2>
+    <p>Einfache, transparente Preise. Keine Überraschungen. Keine versteckten Kosten. Nur Wert.</p>
+  </div>
+  <div class="pricing">
+    <div class="plan glass lift fade-up">
+      <span class="mono-label">🌱 Starter</span>
+      <h3>Free <span class="badge blue">Basis</span></h3>
+      <div class="price gradient-text">0 € <small>/ Monat</small></div>
+      <ul><li>✅ Alle Regeln</li><li>✅ Session-Start-Hook</li><li>✅ Community-Support</li></ul>
+      <div class="inner-card glass" style="margin-bottom:20px"><span class="mono-label">💡 Perfekt für</span> Einsteiger, Profis und alle dazwischen</div>
+      <a href="#start" class="btn btn-tertiary">🌱 Gratis starten <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="plan pop glass glow-border lift fade-up">
+      <span class="badge ribbon">🔥 Beliebteste Wahl</span>
+      <span class="mono-label">🚀 Pro</span>
+      <h3>Pro <span class="badge">Empfohlen</span></h3>
+      <div class="price gradient-text">0 € <small>/ Monat</small><span class="old">49 €</span></div>
+      <ul><li>✅ Alles aus Free</li><li>✅ Pro-Modus ⚡</li><li>✅ Prioritäts-Support 💬</li><li>✅ Magische Updates 🪄</li></ul>
+      <div class="inner-card glass" style="margin-bottom:20px"><span class="mono-label">⏰ Angebot endet in</span> <strong>02:14:59</strong> <span class="pulse pink"></span></div>
+      <a href="#start" class="btn btn-primary">🚀 Pro holen <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="plan glass lift fade-up">
+      <span class="mono-label">🏢 Enterprise</span>
+      <h3>Enterprise <span class="badge orange">Custom</span></h3>
+      <div class="price gradient-text">0 € <small>/ Monat</small></div>
+      <ul><li>✅ Alles aus Pro</li><li>✅ Eigener Ansprechpartner 🤝</li><li>✅ SLA 99,999 % 🛡️</li></ul>
+      <div class="inner-card glass" style="margin-bottom:20px"><span class="mono-label">🏆 Vertraut von</span> Fortune-500-Teams weltweit</div>
+      <a href="#start" class="btn btn-secondary">📞 Vertrieb kontaktieren <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<section id="stimmen" class="container">
+  <div class="section-head fade-up">
+    <span class="eyebrow">⭐ Testimonials <span class="counter-badge">12</span></span>
+    <h2>💬 Was unsere <span class="gradient-text">Nutzer</span> sagen</h2>
+    <p>Echte Stimmen von echten Menschen. Echt.</p>
+  </div>
+  <div class="rating-summary fade-up">
+    <div class="glass">⭐ 4,9/5 <span class="dot">·</span> G2</div>
+    <div class="glass">🏆 4,8/5 <span class="dot">·</span> Capterra</div>
+    <div class="glass">💜 5,0/5 <span class="dot">·</span> Product Hunt</div>
+  </div>
+  <div class="testimonials">
+    <div class="quote glass lift fade-up">
+      <div class="stars">★★★★★ <span class="verified">✔ Verifiziert</span></div>
+      <blockquote>„themis hat meine Art zu arbeiten komplett verändert. Ein absoluter Game-Changer – ich kann mir ein Leben ohne nicht mehr vorstellen! 🚀“</blockquote>
+      <div class="person"><div class="avatar">LM</div><div><strong>Lena Mayer</strong><small>CTO <span class="dot">·</span> Nexora</small></div></div>
+    </div>
+    <div class="quote glass lift fade-up">
+      <div class="stars">★★★★★ <span class="verified">✔ Verifiziert</span></div>
+      <blockquote>„Nicht nur ein Tool, sondern ein echter Partner. Die beste Investition, die wir je gemacht haben – und das kostenlos. 💜“</blockquote>
+      <div class="person"><div class="avatar">JS</div><div><strong>Jonas Schmidt</strong><small>Head of Engineering <span class="dot">·</span> Voltix</small></div></div>
+    </div>
+    <div class="quote glass lift fade-up">
+      <div class="stars">★★★★★ <span class="verified">✔ Verifiziert</span></div>
+      <blockquote>„Endlich klingt Claude wie ein Mensch. Schnell, präzise, zuverlässig. Wir haben unsere Produktivität verzehnfacht. 📈“</blockquote>
+      <div class="person"><div class="avatar">SK</div><div><strong>Sarah Klein</strong><small>Lead Developer <span class="dot">·</span> Loopwise</small></div></div>
+    </div>
+    <div class="quote glass lift fade-up">
+      <div class="stars">★★★★★ <span class="verified">✔ Verifiziert</span></div>
+      <blockquote>„Seien wir ehrlich: Ohne themis wären wir heute nicht da, wo wir sind. Ein echter Meilenstein für unser Team. 🏆“</blockquote>
+      <div class="person"><div class="avatar">MB</div><div><strong>Max Becker</strong><small>Founder &amp; CEO <span class="dot">·</span> Skyward</small></div></div>
+    </div>
+    <div class="quote glass lift fade-up">
+      <div class="stars">★★★★★ <span class="verified">✔ Verifiziert</span></div>
+      <blockquote>„Kein Aufwand. Kein Stress. Nur Ergebnisse. Ich empfehle es wirklich jedem – das Beste, was mir dieses Jahr passiert ist. ✨“</blockquote>
+      <div class="person"><div class="avatar">AW</div><div><strong>Anna Weber</strong><small>Content Lead <span class="dot">·</span> Prismo</small></div></div>
+    </div>
+    <div class="quote glass lift fade-up">
+      <div class="stars">★★★★★ <span class="verified">✔ Verifiziert</span></div>
+      <blockquote>„Ich war skeptisch. Dann habe ich es ausprobiert. Jetzt bin ich Fan. Das verändert alles. 🔥“</blockquote>
+      <div class="person"><div class="avatar">TF</div><div><strong>Tim Fischer</strong><small>Senior Engineer <span class="dot">·</span> Quillon</small></div></div>
+    </div>
+  </div>
+  <div class="carousel-dots"><button aria-label="Zurück">←</button><span class="on"></span><span></span><span></span><span></span><button aria-label="Weiter">→</button></div>
+</section>
+
+<section id="faq" class="container">
+  <div class="section-head fade-up">
+    <span class="eyebrow">❓ FAQ <span class="counter-badge">6</span></span>
+    <h2>🤔 Häufig gestellte <span class="gradient-text">Fragen</span></h2>
+    <p>Hier findest du Antworten auf die häufigsten Fragen.</p>
+  </div>
+  <div class="faq">
+    <details class="glass fade-up" open>
+      <summary>🤔 Was ist themis eigentlich?</summary>
+      <p>Gute Frage! Im Kern ist themis ein Plugin für Claude Code, das bei jedem Session-Start eine gemeinsame Regeldatei aus GitHub lädt – damit Claude ohne typische KI-Muster schreibt. Es ist wichtig zu beachten, dass es eine entscheidende Rolle für die Qualität deiner Texte spielt.</p>
+    </details>
+    <details class="glass fade-up" open>
+      <summary>💸 Was kostet themis?</summary>
+      <p>Nichts. Gar nichts. Absolut nichts.</p>
+    </details>
+    <details class="glass fade-up">
+      <summary>🔐 Sind meine Daten sicher?</summary>
+      <p>Keine Sorge! Deine Daten sind bei uns in den besten Händen. Darüber hinaus setzen wir auf modernste Sicherheitsstandards.</p>
+    </details>
+    <details class="glass fade-up">
+      <summary>🛑 Kann ich jederzeit aufhören?</summary>
+      <p>Selbstverständlich! Du kannst jederzeit aufhören – ganz ohne Stress, ganz ohne Verpflichtung, ganz ohne Risiko.</p>
+    </details>
+    <details class="glass fade-up">
+      <summary>🧩 Funktioniert themis mit meinem Setup?</summary>
+      <p>Ja! themis fügt sich nahtlos in jede Umgebung ein – egal, wie du arbeitest. Stell dir vor, wie einfach das ist.</p>
+    </details>
+    <details class="glass fade-up">
+      <summary>🚀 Wie schnell sehe ich Ergebnisse?</summary>
+      <p>Sofort. Wirklich sofort. Zusammenfassend lässt sich sagen: schneller geht es nicht.</p>
+    </details>
+  </div>
+</section>
+
+<section id="start" class="container">
+  <div class="cta glass glow-border fade-up">
+    <span class="eyebrow"><span class="sparkle">✨</span> Bereit? <span class="dot">·</span> Jetzt! <span class="sparkle">✨</span></span>
+    <h2>🚀 Bereit für die <span class="gradient-text">Zukunft</span> des <span class="hl-italic">Schreibens</span>?</h2>
+    <p>Schließ dich über 10.000 Entwicklern an und hebe deine Texte auf das nächste Level.</p>
+    <p>Zusammenfassend lässt sich sagen: Es war nie einfacher.</p>
+    <form class="newsletter" id="newsletter">
+      <input type="email" placeholder="✉️ Deine E-Mail-Adresse" aria-label="E-Mail">
+      <button type="submit" class="btn btn-primary">🎉 Los geht's! <i class="fa-solid fa-arrow-right"></i></button>
+    </form>
+    <div class="hint">💡 Tipp: Bitte gib deine E-Mail-Adresse im Format name@beispiel.de ein. Wir senden dir keinen Spam – versprochen! 🤞</div>
+    <div class="toast" id="toast"></div>
+    <div class="hero-buttons">
+      <a href="#" class="btn btn-secondary">⭐ Auf GitHub ansehen <span class="badge orange">2,4k ★</span> <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="#" class="btn btn-tertiary">📚 Zur Doku <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="#" class="btn btn-primary">💬 Community beitreten <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <p class="reassure">🔒 Sicher <span class="dot">·</span> ⚡ Schnell <span class="dot">·</span> 💜 Kostenlos <span class="dot">·</span> Keine Sorge, du kannst jederzeit aufhören.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo"><span class="logo-mark">⚖️</span> themis <span class="badge">Beta</span></div>
+        <p style="color:var(--muted);margin-top:14px;font-size:15px">Klar. Menschlich. Mühelos. Die Zukunft des Schreibens – heute. ✨</p>
+        <p style="margin-top:14px;font-size:13px;color:var(--muted);display:flex;align-items:center;gap:10px"><span class="pulse"></span> Alle Systeme betriebsbereit <span class="dot">·</span> 99,99 % Uptime</p>
+        <div class="socials">
+          <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>✨ Produkt</h4>
+        <ul>
+          <li><a href="#">✨ Features →</a></li>
+          <li><a href="#">💰 Preise <span class="badge green">0 €</span></a></li>
+          <li><a href="#">🗺️ Roadmap →</a></li>
+          <li><a href="#">📝 Changelog <span class="badge">Neu</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>📚 Ressourcen</h4>
+        <ul>
+          <li><a href="#">📚 Dokumentation →</a></li>
+          <li><a href="#">🎓 Tutorials →</a></li>
+          <li><a href="#">📰 Blog <span class="counter-badge">3</span></a></li>
+          <li><a href="#">💬 Community →</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>🏢 Unternehmen</h4>
+        <ul>
+          <li><a href="#">👋 Über uns →</a></li>
+          <li><a href="#">💼 Karriere <span class="counter-badge">5</span></a></li>
+          <li><a href="#">📧 Kontakt →</a></li>
+          <li><a href="#">🔒 Datenschutz →</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 themis <span class="sep">|</span> Mit 💜 gemacht <span class="sep">·</span> Powered by KI ✨ <span class="sep">|</span> 🇩🇪 Made in Germany</span>
+      <span>Impressum <span class="sep">·</span> Datenschutz <span class="sep">·</span> AGB <span class="sep">·</span> Cookies 🍪</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Fade-up: Inhalte sind ab dem Laden sichtbar; die Animation verschiebt nur die Position.
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add('animate'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-up').forEach((el) => io.observe(el));
+
+  // Hochzählen und Schreibmaschine: Zahlen und Text stehen im Endzustand im HTML.
+  // Erst eine echte Nutzereingabe startet die Effekte, damit Screenshots den Endzustand zeigen.
+  const fmt = new Intl.NumberFormat('de-DE');
+  let started = false;
+  function runEffects() {
+    if (started) return;
+    started = true;
+    document.querySelectorAll('.count').forEach((el) => {
+      const target = Number(el.dataset.target);
+      const start = performance.now();
+      const dur = 1800;
+      (function tick(now) {
+        const p = Math.min((now - start) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = fmt.format(Math.round(target * eased));
+        if (p < 1) requestAnimationFrame(tick);
+      })(start);
+    });
+    const typed = document.getElementById('typed');
+    const full = typed.textContent;
+    let i = 0;
+    typed.textContent = '';
+    const iv = setInterval(() => {
+      typed.textContent = full.slice(0, ++i);
+      if (i >= full.length) clearInterval(iv);
+    }, 35);
+  }
+  ['wheel', 'touchstart', 'keydown'].forEach((ev) => window.addEventListener(ev, runEffects, { once: true, passive: true }));
+
+  // Formular meldet Erfolg sofort, ohne Antwort eines Servers
+  document.getElementById('newsletter').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const val = e.target.querySelector('input').value;
+    const toast = document.getElementById('toast');
+    if (!val.includes('@')) {
+      toast.style.color = '#fca5a5';
+      toast.textContent = '😢 Ups! Da ist leider etwas schiefgelaufen! Entschuldigung! (Fehlercode: ERR_4711)';
+      return;
+    }
+    toast.style.color = '#6ee7b7';
+    toast.textContent = '🎉 Juhu! Du bist dabei! Willkommen in der themis-Familie! 🚀✨';
+  });
+</script>
+</body>
+</html>

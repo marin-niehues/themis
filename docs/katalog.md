@@ -1,21 +1,26 @@
 # Muster-Katalog und Quellen
 
-Stand: 2026-10-07. Dieser Katalog ist die Grundlage für `RULES.md`. Er wird nicht in Sessions geladen, sondern dient zum Nachschlagen, Diskutieren und Pflegen der Regeln. Pro Muster steht, wie gut es belegt ist.
+Dieser Katalog ist die Grundlage für `RULES.md` und hat den Stand vom 7. Oktober 2026 mit späteren Ergänzungen. Claude lädt ihn in keiner Session. Er dient zum Nachschlagen, Diskutieren und Pflegen der Regeln. Zu jedem Muster steht, wie gut es belegt ist.
 
-Belegstufen: **K** = Korpusstudie mit Zahlen, **V** = Anthropic-Dokumentation oder Claude-Code-Systemprompt, **P** = Praktiker-Quelle (Skill, Blog, Wikipedia-Leitfaden).
+Die Belegstufen sind K für eine Korpusstudie mit Zahlen, V für die Dokumentation von Anthropic oder den Systemprompt von Claude Code und P für eine Quelle aus der Praxis wie einen Skill, einen Blog oder einen Leitfaden der Wikipedia.
 
 ## 1. Warum die Regeldatei so aufgebaut ist
 
-- **Kurz.** Anthropic empfiehlt unter 200 Zeilen; längere Dateien senken die Befolgung. Eine Studie zu AGENTS.md-Dateien (ICLR 2026, arXiv 2602.11988) fand, dass lange, generierte Kontextdateien die Erfolgsquote senken und die Kosten um 20 Prozent erhöhen. IFScale (NeurIPS 2025, arXiv 2507.11538): Claude Sonnet 4 folgt 100 Regeln zu 94 Prozent, 250 Regeln zu 77 Prozent, Ausfälle sind stille Auslassungen. [K, V]
-- **Wichtigstes zuerst.** Anfang und Ende des Kontexts werden am besten erinnert, die Mitte am schlechtesten (arXiv 2307.03172). Darum stehen die fünf Kernregeln oben. [K]
-- **Ersatz statt Verbot.** "Semantic Gravity Wells" (arXiv 2601.08070): das Modell achtet beim Verbot stärker auf das verbotene Wort als auf das "nicht". Anthropic: positive Beispiele wirken besser als Verbotslisten. Darum nennt jedes Muster seinen Ersatz. [K schwach, V]
-- **Beispiele.** Anthropic nennt drei bis fünf Beispiele als zuverlässigstes Mittel für Ton und Format. [V]
-- **Kein "fass dich kurz".** Giskard Phare: Kürze-Anweisungen senken die Halluzinationsresistenz um bis zu 20 Punkte, das Modell erfindet lieber eine kurze Antwort als eine falsche Prämisse zu erklären. Darum "Ergebnis zuerst, Fehler vollständig" statt "kurz". [K]
-- **Kein "nur Wichtiges".** Laut Anthropic befolgt das Modell das so wörtlich, dass es echte Befunde verschweigt. Darum konkrete Schwellen ("alles, was der Leser zum Handeln braucht"). [V]
-- **Deutsch, nativ.** Übersetzte Anweisungen schneiden 7 bis 22 Prozent schlechter ab als nativ formulierte (Marco-Bench-MIF, ACL 2025). Deutsche Beispiele sind der Inhalt der Datei und lassen sich nicht auf Englisch ausdrücken. [K]
-- **Regeln sind Kontext, kein Zwang.** Anthropic: CLAUDE.md und Hook-Kontext werden als Hinweis behandelt, nicht als erzwungene Konfiguration. Was garantiert gelten muss, braucht einen Hook, der Ausgaben prüft. [V]
+Die Datei ist kurz, weil Anthropic unter 200 Zeilen empfiehlt und längere Dateien die Befolgung senken. Eine Studie zu AGENTS.md-Dateien (ICLR 2026, arXiv 2602.11988) fand, dass lange generierte Kontextdateien die Erfolgsquote senken und die Kosten um 20 Prozent erhöhen. Nach IFScale (NeurIPS 2025, arXiv 2507.11538) folgt Claude Sonnet 4 bei 100 Regeln zu 94 Prozent und bei 250 Regeln zu 77 Prozent. Die Ausfälle sind stille Auslassungen. [K, V]
 
-Quellen: https://code.claude.com/docs/en/best-practices, https://code.claude.com/docs/en/memory, https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices, https://www.humanlayer.dev/blog/writing-a-good-claude-md, https://www.giskard.ai/knowledge/good-answers-are-not-necessarily-factual-answers-an-analysis-of-hallucination-in-leading-llms
+Die Grundsätze stehen am Anfang, weil ein Modell Anfang und Ende seines Kontexts besser erinnert als die Mitte (arXiv 2307.03172). [K]
+
+Jedes Muster nennt seinen Ersatz. Die Studie „Semantic Gravity Wells“ (arXiv 2601.08070) zeigt, dass ein Modell bei einem Verbot stärker auf das verbotene Wort achtet als auf das „nicht“. Anthropic schreibt, dass positive Anweisungen besser wirken als Verbotslisten. [K schwach, V]
+
+Anthropic nennt Beispiele als zuverlässiges Mittel für Ton und Format. Die Datei verzichtet trotzdem auf Beispielsätze, weil sich das Modell sonst zu eng an ihnen orientiert. [V]
+
+Die Datei verlangt das Ergebnis zuerst und Fehler vollständig, weil Anweisungen zur Kürze nach dem Benchmark Giskard Phare die Resistenz gegen Halluzinationen um bis zu 20 Punkte senken. Das Modell erfindet dann eher eine kurze Antwort, als eine falsche Prämisse zu erklären. [K]
+
+Die Datei nennt konkrete Schwellen statt „nur Wichtiges“, weil das Modell eine solche Anweisung laut Anthropic so wörtlich befolgt, dass es echte Befunde verschweigt. [V]
+
+Die Datei ist in nativem Deutsch geschrieben, weil übersetzte Anweisungen nach Marco-Bench-MIF (ACL 2025) 7 bis 22 Prozent schlechter abschneiden. [K]
+
+Die Regeln sind Kontext und damit kein erzwungener Ablauf. Anthropic behandelt CLAUDE.md und den Kontext aus Hooks als Hinweis. Eine Regel, die garantiert gelten muss, braucht einen Hook, der die Ausgaben prüft. [V]
 
 ## 2. Sprache (Prosa)
 
@@ -96,7 +101,7 @@ Quellen: no-slop (commits-and-prs.md), https://www.theregister.com/2026/02/03/gi
 
 Die Muster zu Marketingseiten in `RULES.md` (Pill über der Hauptüberschrift, Eyebrow, Raster aus drei Spalten, Logoreihe) stammen aus eigener Beobachtung von Generator-Ausgaben.
 
-Die Muster zu Komponenten stammen aus einem LinkedIn-Beitrag von Sandro M. (Product Design und UX/UI) vom Oktober 2026. Er ließ ein Modell zehn Komponenten einmal im üblichen Generator-Stil und einmal so gestalten, wie ein Mensch es täte. Die Generator-Fassungen enthielten Farbverläufe, Hilfetexte zu selbsterklärenden Feldern, Fortschrittsbalken, senkrechte Trenner, Pills, Icons und Metadaten zu jeder Angabe. Seine Erklärung lautet, dass ein Modell lieber eine Angabe doppelt nennt, als eine zu vergessen. Ein Kommentar unter dem Beitrag fasst den Unterschied so: Das Modell fragt, was noch hineinpasst, und der Mensch fragt, was er weglassen kann. Der Beitrag ist eine Einzelbeobachtung ohne Messung.
+Die Muster zu Komponenten stammen aus einem LinkedIn-Beitrag von Sandro M. (Product Design und UX/UI) vom Oktober 2026. Er ließ ein Modell zehn Komponenten einmal im üblichen Generator-Stil und einmal so gestalten, wie ein Mensch es täte. Die Generator-Fassungen enthielten Farbverläufe, Hilfetexte zu selbsterklärenden Feldern, Fortschrittsbalken, senkrechte Trenner, Pills, Icons und Metadaten zu jeder Angabe. Seine Erklärung lautet, dass ein Modell lieber eine Angabe doppelt nennt, als eine zu vergessen. Ein Kommentar unter dem Beitrag fasst den Unterschied so zusammen: Das Modell fragt, was noch hineinpasst. Der Mensch fragt, was er weglassen kann. Der Beitrag ist eine Einzelbeobachtung ohne Messung.
 
 Karten in Karten und Karten als Standardbehälter sind unter Designern als Erkennungszeichen für KI-Oberflächen breit beschrieben, aber nicht gemessen. Die einzige Messung (Krebs, 1.500 Seiten aus Show HN) prüft farbige Kartenränder und gleichförmige Feature-Karten, aber keine Verschachtelung. Die Warnung ist älter als KI: Refactoring UI rät zu Abstand statt Rahmen, Material Design und die Nielsen Norman Group empfehlen Listen für gleichartige Inhalte. Einige Design-Systeme wie Genesys Spark erlauben verschachtelte Karten in wenigen Ebenen.
 
