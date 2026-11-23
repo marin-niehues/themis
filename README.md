@@ -14,7 +14,7 @@ Die linke Seite ist gestellt. Claude hat sie absichtlich so gebaut, wie Generato
 
 ## Beispiele
 
-Die Beispiele stammen aus einem Test mit 100 Aufgaben aus allen Textsorten vom 23. November 2026. Claude hat jede Aufgabe einmal ohne und einmal mit RULES.md bearbeitet. Eine zweite Claude-Instanz hat danach beide Fassungen verglichen. In einer Gegenprobe mit 100 frischen Aufgaben war der Text mit der aktuellen Fassung in 43 Aufgaben besser, in 12 schlechter und in 45 gleich gut. Die Beispiele unten stammen aus einem früheren Durchlauf. Aufgaben, Prüfanleitung und Ergebnisse stehen in [docs/test](docs/test).
+Die Beispiele stammen aus einem Test mit 100 Aufgaben aus allen Textsorten vom 23. November 2026. Claude hat jede Aufgabe einmal ohne und einmal mit RULES.md bearbeitet. Eine zweite Claude-Instanz hat danach beide Fassungen verglichen. In einer Gegenprobe mit 100 frischen Aufgaben war der Text mit der aktuellen Fassung in 60 Aufgaben besser, in 9 schlechter und in 31 gleich gut. Die Beispiele unten stammen aus einem früheren Durchlauf. Aufgaben, Prüfanleitung und Ergebnisse stehen in [docs/test](docs/test).
 
 Hier stehen vier typische Aufgaben. Die Texte sind unverändert.
 
