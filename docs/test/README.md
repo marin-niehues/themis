@@ -48,3 +48,19 @@ Der Abschnitt „Englische Texte“ in `RULES.md` wurde gegen die vorige Fassung
 
 Die Aufgaben mit eigenen Ideen geben Titel, Bilder und Thesen vor, etwa einen Vortragstitel mit Wortspiel. In ihnen entstehen die meisten Muster, weil das Modell ein vorgegebenes Bild gern über den ganzen Text weiterführt. Diese Aufgaben enthalten unveröffentlichte Entwürfe und liegen deshalb nicht im Repository.
 
+
+
+### Vollständiger Abgleich mit den Quellen
+
+Nach dem vollständigen Abgleich mit den drei Quellen lief die erweiterte Fassung gegen die vorige. Die ersten zwei Läufe verlor sie auf Englisch deutlich. Danach wurden die Teile einzeln getestet und vier Sätze umformuliert.
+
+| Lauf auf Englisch | Erweiterte Fassung besser | Vorige Fassung besser | Gleich |
+|---|---|---|---|
+| Erster Einbau | 5 | 13 | 0 |
+| Nach Korrektur gegen das Kürzen | 1 | 14 | 3 |
+| Nur die erweiterte englische Tabelle | 6 | 6 | 6 |
+| Alles außer der englischen Tabelle | 5 | 13 | 0 |
+| Endfassung | 7 | 9 | 2 |
+
+Auf Deutsch lag die erweiterte Fassung mit 13 Aufgaben aus `testsatz-3/aufgaben-m1.md` bei 6 zu 4, drei Aufgaben waren gleich. Beide Fassungen fanden die eingebauten Fehler. Die Endfassung liegt auf Englisch im Rahmen der Schwankung zwischen zwei Läufen und deckt dafür alle Muster der Quellen ab.
+

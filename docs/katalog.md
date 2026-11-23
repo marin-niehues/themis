@@ -71,6 +71,10 @@ Ein erster Versuch hat die neuen Muster als reine Verbote in die deutsche Tabell
 
 Quellen: https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing (CC BY-SA 4.0), https://github.com/hardikpandya/stop-slop (MIT), https://github.com/petergyang/no-ai-slop (MIT)
 
+In einem zweiten Schritt wurden alle drei Quellen vollständig gelesen und Muster für Muster mit `RULES.md` abgeglichen. Es ergaben sich 150 Einträge. Jeder ist jetzt umgesetzt oder war schon abgedeckt, mit Ausnahme von drei Wikipedia-Einträgen, die sich nicht auf Texte von Claude Code übertragen lassen. Harte Verbote aus stop-slop, etwa „kein Passiv“ oder „keine Aufzählung mit drei Punkten“, stehen in abgeschwächter Form in der Datei. Die vollständige Zuordnung steht in `docs/quellen-abgleich.md`.
+
+Der erste Einbau machte englische Texte dünner und kühler. Ein Test in Teilen zeigte, dass die erweiterte englische Tabelle daran nicht beteiligt war. Verantwortlich waren vier Sätze außerhalb der Tabellen: ein fester erster Satz nach der Anrede, ein Verbot, Selbstverständliches zu erklären, strenge Regeln für Fettdruck und Überschriften sowie ein Übertragbarkeitstest, der zum Erfinden von Details einlud. Diese Sätze wurden so umformuliert, dass das Anliegen der Quelle erhalten bleibt.
+
 ## 4. Code
 
 Muster mit breitem Konsens (fünf und mehr unabhängige Quellen, darunter Claude Codes eigener Systemprompt):
