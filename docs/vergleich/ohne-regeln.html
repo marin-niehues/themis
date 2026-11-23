@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>themis – gemeinsame Regeln für Claude Code</title>
+<meta name="description" content="themis ist ein Plugin für Claude Code. Es lädt bei jedem Sessionstart eine gemeinsame Regeldatei aus GitHub, damit Claude Texte, Code und Oberflächen ohne typische KI-Muster schreibt.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f4ef;
+    --surface: #ffffff;
+    --ink: #1d1c1a;
+    --ink-soft: #55524b;
+    --line: #dcd7cc;
+    --accent: #8a3b1f;
+    --accent-soft: #f1e4dc;
+    --code-bg: #1f1e1c;
+    --code-ink: #ece8df;
+    --code-muted: #9a958a;
+    --serif: "Source Serif 4", Georgia, serif;
+    --sans: "IBM Plex Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+    --max: 68rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #161513;
+      --surface: #1f1e1b;
+      --ink: #ece8df;
+      --ink-soft: #a8a297;
+      --line: #34322d;
+      --accent: #e0916c;
+      --accent-soft: #2e221c;
+      --code-bg: #0f0e0d;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 1.0625rem/1.6 var(--sans);
+  }
+  a { color: var(--accent); text-underline-offset: 0.15em; }
+  a:hover { text-decoration-thickness: 2px; }
+  code { font-family: var(--mono); font-size: 0.92em; }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 1.25rem; }
+
+  /* Kopfzeile */
+  header.top {
+    border-bottom: 1px solid var(--line);
+  }
+  header.top .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 3.75rem;
+  }
+  .brand {
+    font: 600 1.25rem/1 var(--serif);
+    color: var(--ink); text-decoration: none; letter-spacing: -0.01em;
+  }
+  nav.top a {
+    color: var(--ink-soft); text-decoration: none; font-size: 0.95rem; margin-left: 1.5rem;
+  }
+  nav.top a:hover { color: var(--ink); }
+  @media (max-width: 34rem) { nav.top a:not(:last-child) { display: none; } }
+
+  /* Einstieg */
+  .hero { padding: 5rem 0 4rem; }
+  .hero-grid {
+    display: grid; gap: 3rem;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    align-items: center;
+  }
+  @media (max-width: 52rem) { .hero-grid { grid-template-columns: 1fr; } .hero { padding-top: 3rem; } }
+  .eyebrow {
+    font: 500 0.85rem/1 var(--mono); color: var(--accent);
+    margin: 0 0 1.25rem;
+  }
+  h1 {
+    font: 600 clamp(2.2rem, 5vw, 3.4rem)/1.08 var(--serif);
+    letter-spacing: -0.02em; margin: 0 0 1.25rem;
+  }
+  .lead { font-size: 1.2rem; color: var(--ink-soft); margin: 0 0 2rem; max-width: 34rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .btn {
+    display: inline-block; padding: 0.75rem 1.2rem; border-radius: 6px;
+    font: 500 1rem/1 var(--sans); text-decoration: none;
+    border: 1px solid var(--ink);
+  }
+  .btn-primary { background: var(--ink); color: var(--bg); }
+  .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+  .btn-ghost { color: var(--ink); }
+  .btn-ghost:hover { background: var(--surface); }
+
+  /* Terminal */
+  .term {
+    background: var(--code-bg); color: var(--code-ink);
+    border-radius: 10px; overflow: hidden;
+    font: 400 0.88rem/1.7 var(--mono);
+    box-shadow: 0 1px 0 rgba(0,0,0,.04), 0 12px 32px -16px rgba(0,0,0,.35);
+  }
+  .term-bar {
+    padding: 0.6rem 1rem; color: var(--code-muted); font-size: 0.78rem;
+    border-bottom: 1px solid rgba(255,255,255,.07);
+  }
+  .term pre { margin: 0; padding: 1rem 1.1rem 1.2rem; white-space: pre-wrap; word-break: break-word; }
+  .t-muted { color: var(--code-muted); }
+  .t-ok { color: #9fcf8f; }
+  .t-acc { color: #e8a37f; }
+
+  /* Abschnitte */
+  section { padding: 4.5rem 0; border-top: 1px solid var(--line); }
+  h2 {
+    font: 600 clamp(1.6rem, 3vw, 2.1rem)/1.2 var(--serif);
+    letter-spacing: -0.01em; margin: 0 0 1rem; max-width: 36rem;
+  }
+  .section-intro { color: var(--ink-soft); max-width: 40rem; margin: 0 0 2.5rem; }
+  h3 { font: 600 1.1rem/1.3 var(--sans); margin: 0 0 0.5rem; }
+
+  /* Problem */
+  .two-col {
+    display: grid; gap: 3rem;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  @media (max-width: 52rem) { .two-col { grid-template-columns: 1fr; gap: 2rem; } }
+  .two-col p { margin: 0 0 1rem; }
+  .patterns { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .patterns li {
+    padding: 0.85rem 0; border-bottom: 1px solid var(--line);
+    display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 1rem;
+  }
+  .patterns .k { font: 500 0.82rem/1.9 var(--mono); color: var(--accent); }
+
+  /* Ablauf */
+  .steps { counter-reset: step; display: grid; gap: 1.5rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  @media (max-width: 52rem) { .steps { grid-template-columns: 1fr; } }
+  .step {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+    padding: 1.5rem;
+  }
+  .step::before {
+    counter-increment: step; content: counter(step);
+    display: block; font: 600 1.6rem/1 var(--serif); color: var(--accent); margin-bottom: 1rem;
+  }
+  .step p { margin: 0; color: var(--ink-soft); }
+
+  /* Bereiche */
+  .areas { display: grid; gap: 0; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); }
+  @media (max-width: 52rem) { .areas { grid-template-columns: 1fr; } }
+  .area { padding: 1.5rem 1.5rem 1.5rem 0; }
+  .area + .area { border-left: 1px solid var(--line); padding-left: 1.5rem; }
+  @media (max-width: 52rem) {
+    .area { padding: 1.5rem 0; }
+    .area + .area { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; }
+  }
+  .area p { margin: 0 0 0.75rem; color: var(--ink-soft); }
+  .area .ex { font-size: 0.95rem; color: var(--ink); }
+  .area .ex span { color: var(--ink-soft); }
+
+  /* Zentral */
+  .callout {
+    background: var(--accent-soft); border-radius: 10px; padding: 2rem;
+    display: grid; gap: 2rem; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  @media (max-width: 52rem) { .callout { grid-template-columns: 1fr; padding: 1.5rem; } }
+  .callout p { margin: 0 0 1rem; }
+  .callout p:last-child { margin-bottom: 0; }
+  .flow { list-style: none; margin: 0; padding: 0; font-size: 0.97rem; }
+  .flow li { padding-left: 1.25rem; position: relative; margin-bottom: 0.6rem; }
+  .flow li::before { content: ""; position: absolute; left: 0; top: 0.65em; width: 0.45rem; height: 1px; background: var(--accent); }
+
+  /* Installation */
+  .install-grid { display: grid; gap: 2.5rem; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); align-items: start; }
+  @media (max-width: 52rem) { .install-grid { grid-template-columns: 1fr; } }
+  .install-grid ol { margin: 0; padding-left: 1.2rem; }
+  .install-grid li { margin-bottom: 0.75rem; }
+  .copy-row { position: relative; }
+  .copy-btn {
+    position: absolute; top: 0.45rem; right: 0.6rem;
+    background: transparent; color: var(--code-muted); border: 1px solid rgba(255,255,255,.15);
+    border-radius: 4px; font: 500 0.75rem/1 var(--sans); padding: 0.35rem 0.55rem; cursor: pointer;
+  }
+  .copy-btn:hover { color: var(--code-ink); border-color: rgba(255,255,255,.35); }
+
+  /* Fragen */
+  .faq { max-width: 46rem; }
+  details { border-bottom: 1px solid var(--line); }
+  details:first-of-type { border-top: 1px solid var(--line); }
+  summary {
+    cursor: pointer; list-style: none; padding: 1.1rem 2rem 1.1rem 0; position: relative;
+    font-weight: 500;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: "+"; position: absolute; right: 0.25rem; top: 0.95rem;
+    font: 400 1.3rem/1 var(--sans); color: var(--ink-soft);
+  }
+  details[open] summary::after { content: "–"; }
+  details p { margin: 0 0 1.2rem; color: var(--ink-soft); }
+
+  /* Fuß */
+  footer { border-top: 1px solid var(--line); padding: 2rem 0 3rem; color: var(--ink-soft); font-size: 0.92rem; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; }
+
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#">themis</a>
+    <nav class="top" aria-label="Hauptnavigation">
+      <a href="#ablauf">So funktioniert es</a>
+      <a href="#bereiche">Was die Regeln abdecken</a>
+      <a href="#installation">Installation</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Plugin für Claude Code</p>
+        <h1>Ein Regelwerk für das ganze Team.</h1>
+        <p class="lead">themis lädt bei jedem Sessionstart eure gemeinsamen Regeln aus GitHub. Claude schreibt danach Texte, Code und Oberflächen so, wie euer Team es festgelegt hat, und lässt die üblichen KI-Muster weg.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#installation">Installieren</a>
+          <a class="btn btn-ghost" href="https://github.com/marin-niehues/themis">Repository ansehen</a>
+        </div>
+      </div>
+      <div class="term" aria-label="Beispiel: Start einer Claude-Code-Session mit themis">
+        <div class="term-bar">claude</div>
+<pre><span class="t-muted">$</span> claude
+<span class="t-muted">themis:</span> Regeln geladen aus marin-niehues/themis
+<span class="t-muted">        Stand des letzten Commits auf main</span>
+
+<span class="t-acc">&gt;</span> Schreib die Release-Notes für 2.4
+
+<span class="t-ok">2.4 behebt den Fehler beim CSV-Export und
+beschleunigt die Suche in großen Projekten.</span></pre>
+      </div>
+    </div>
+  </div>
+
+  <section id="problem">
+    <div class="wrap two-col">
+      <div>
+        <h2>Man erkennt KI-Text nach zwei Sätzen.</h2>
+        <p>Wer täglich mit Claude Code arbeitet, kennt die Muster: Einleitungen, die nichts sagen, Aufzählungen mit immer drei Punkten, Kommentare, die den Code nacherzählen, Oberflächen mit Farbverlauf und Emoji.</p>
+        <p>Viele Teams lösen das mit einer <code>CLAUDE.md</code> pro Projekt. Nach ein paar Wochen gibt es dann zehn Fassungen, und keine ist aktuell.</p>
+      </div>
+      <ul class="patterns" aria-label="Typische Muster">
+        <li><span class="k">Text</span><span>„In der heutigen schnelllebigen Welt …“ als erster Satz</span></li>
+        <li><span class="k">Text</span><span>Gedankenstriche, Doppelpunkte und Fettdruck in jedem Absatz</span></li>
+        <li><span class="k">Code</span><span>Kommentare wie <code>// Schleife über alle Einträge</code></span></li>
+        <li><span class="k">Code</span><span>Fehlerbehandlung für Fälle, die nicht eintreten können</span></li>
+        <li><span class="k">Oberfläche</span><span>Violetter Verlauf, drei Karten mit Icon, „Loslegen 🚀“</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="ablauf">
+    <div class="wrap">
+      <h2>So funktioniert es</h2>
+      <p class="section-intro">themis hängt sich in den Start einer Claude-Code-Session. Ihr müsst danach nichts mehr tun.</p>
+      <div class="steps">
+        <div class="step">
+          <h3>Session startet</h3>
+          <p>Beim Aufruf von <code>claude</code> holt themis die Regeldatei aus dem GitHub-Repository.</p>
+        </div>
+        <div class="step">
+          <h3>Regeln gehen in den Kontext</h3>
+          <p>Die Datei wird Claude als Kontext mitgegeben, bevor die erste Anfrage kommt.</p>
+        </div>
+        <div class="step">
+          <h3>Claude hält sich daran</h3>
+          <p>Texte, Code und Oberflächen folgen den Regeln, in jedem Projekt und bei jeder Person im Team.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="bereiche">
+    <div class="wrap">
+      <h2>Was die Regeln abdecken</h2>
+      <p class="section-intro">Die Regeldatei ist eine einfache Textdatei. Sie beschreibt, was Claude schreiben soll und was nicht.</p>
+      <div class="areas">
+        <div class="area">
+          <h3>Texte</h3>
+          <p>Commit-Nachrichten, Dokumentation, Release-Notes, E-Mails. Kurze Sätze, keine Füllwörter, keine Floskeln am Anfang und am Ende.</p>
+          <p class="ex"><span>statt</span> „Gerne helfe ich dir dabei!“<br><span>direkt</span> die Antwort</p>
+        </div>
+        <div class="area">
+          <h3>Code</h3>
+          <p>Kommentare nur dort, wo sie etwas erklären, das der Code nicht zeigt. Keine Abstraktion auf Vorrat, keine Hilfsfunktion für eine einzige Stelle.</p>
+          <p class="ex"><span>statt</span> <code>// erhöht i um 1</code><br><span>direkt</span> <code>i++</code></p>
+        </div>
+        <div class="area">
+          <h3>Oberflächen</h3>
+          <p>Ruhige Typografie, klare Abstände, Farben mit Zweck. Kein Standardlook, der aussieht wie jede zweite generierte Seite.</p>
+          <p class="ex"><span>statt</span> „Jetzt loslegen 🚀“<br><span>direkt</span> „Installieren“</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="zentral">
+    <div class="wrap">
+      <div class="callout">
+        <div>
+          <h2>Eine Datei, ein Ort, alle Sessions.</h2>
+          <p>Die Regeln liegen in einem GitHub-Repository und nicht verstreut in einzelnen Projekten. Wer eine Regel ändert, macht einen Commit. Ab der nächsten Session gilt die Änderung bei allen im Team.</p>
+          <p>Weil alles in Git liegt, seht ihr, wer was wann geändert hat, und könnt über Pull Requests darüber sprechen.</p>
+        </div>
+        <ul class="flow" aria-label="Ablauf einer Regeländerung">
+          <li>Jemand bemerkt ein Muster, das stört.</li>
+          <li>Neue Regel als Pull Request ins Repository.</li>
+          <li>Das Team prüft und führt zusammen.</li>
+          <li>Die nächste Session lädt die neue Fassung, bei allen.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="installation">
+    <div class="wrap install-grid">
+      <div>
+        <h2>Installation</h2>
+        <p class="section-intro" style="margin-bottom:1.5rem">Voraussetzung sind Claude Code und die GitHub-CLI <code>gh</code> mit Zugriff auf das Repository.</p>
+        <ol>
+          <li>Repository nach <code>~/themis</code> klonen.</li>
+          <li>Installationsskript ausführen.</li>
+          <li>Neue Claude-Code-Session starten. Die Regeln sind ab jetzt dabei.</li>
+        </ol>
+      </div>
+      <div class="term copy-row">
+        <div class="term-bar">Terminal</div>
+        <button class="copy-btn" type="button" data-copy="gh repo clone marin-niehues/themis ~/themis &amp;&amp; ~/themis/install.sh">Kopieren</button>
+<pre><span class="t-muted">$</span> gh repo clone marin-niehues/themis ~/themis
+<span class="t-muted">$</span> ~/themis/install.sh</pre>
+      </div>
+    </div>
+  </section>
+
+  <section id="fragen">
+    <div class="wrap">
+      <h2>Häufige Fragen</h2>
+      <div class="faq">
+        <details>
+          <summary>Muss ich in jedem Projekt etwas einrichten?</summary>
+          <p>Nein. themis wird einmal pro Rechner installiert und greift in jeder Claude-Code-Session, egal in welchem Projekt.</p>
+        </details>
+        <details>
+          <summary>Was passiert mit unserer bestehenden CLAUDE.md?</summary>
+          <p>Sie bleibt, wie sie ist. Projektspezifische Hinweise gehören weiter dorthin. themis liefert die Regeln, die für alle Projekte gleich sind.</p>
+        </details>
+        <details>
+          <summary>Wann wird eine geänderte Regel wirksam?</summary>
+          <p>Beim nächsten Start einer Session. Laufende Sessions behalten die Fassung, mit der sie gestartet sind.</p>
+        </details>
+        <details>
+          <summary>Können wir eigene Regeln verwenden?</summary>
+          <p>Die Regeldatei ist Text in einem Git-Repository. Ihr könnt sie bearbeiten wie jede andere Datei und Änderungen per Pull Request einbringen.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>themis, ein Plugin für Claude Code</span>
+    <a href="https://github.com/marin-niehues/themis">github.com/marin-niehues/themis</a>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var text = btn.getAttribute('data-copy');
+      if (!navigator.clipboard) return;
+      navigator.clipboard.writeText(text).then(function () {
+        btn.textContent = 'Kopiert';
+        setTimeout(function () { btn.textContent = 'Kopieren'; }, 1600);
+      });
+    });
+  });
+</script>
+</body>
+</html>

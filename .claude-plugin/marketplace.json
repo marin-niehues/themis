@@ -1,0 +1,14 @@
+{
+  "name": "niehues",
+  "owner": {
+    "name": "Marin Niehues"
+  },
+  "description": "Claude-Code-Plugins von Marin Niehues",
+  "plugins": [
+    {
+      "name": "themis",
+      "source": "./themis",
+      "description": "Gemeinsame Schreib- und Arbeitsregeln für Claude Code."
+    }
+  ]
+}
