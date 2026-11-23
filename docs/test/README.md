@@ -35,3 +35,16 @@ Nach fünf Durchläufen mit denselben 100 Aufgaben bestand die Gefahr, dass die 
 Der Gegentest lief mit der Fassung nach dem fünften Durchlauf und zeigte, dass kurze Texte in Oberflächen zu viele Angaben verloren. Nach fünf Korrekturen lief Testsatz 3. Danach kamen drei weitere Korrekturen hinzu: Texte an Kunden sind höflicher. Claude ergänzt Fachwissen eines Praktikers. Konzeptpapiere enthalten Vorschläge statt offener Fragen. Der zweite Lauf von Testsatz 3 prüft diese Fassung. Weil Testsatz 3 dabei zum zweiten Mal verwendet wurde, ist sein Ergebnis etwas weniger unabhängig als das des ersten Laufs.
 
 Bei den eingebauten Fehlern hat Claude mit themis in Testsatz 3 alle 18 bemerkt und dem Auftraggeber genannt. In einem Fall hat es den Brief trotzdem an die falsche Summe angepasst. Ohne themis hat Claude die meisten ebenfalls bemerkt, aber oft still korrigiert oder den Fehler im Text stehen lassen.
+
+## Englische Texte
+
+Der Abschnitt „Englische Texte“ in `RULES.md` wurde gegen die vorige Fassung getestet, die für Englisch nur einen allgemeinen Satz enthielt. Beide Fassungen schrieben dieselben Aufgaben, ein Prüfer verglich sie blind.
+
+| Urteil | 12 sachliche Aufgaben (`englisch/aufgaben.md`, ohne die zwei Vortragsentwürfe) | 6 Aufgaben mit eigenen Ideen des Autors |
+|---|---|---|
+| Neue Fassung besser | 8 | 5 |
+| Vorige Fassung besser | 3 | 1 |
+| Gleich | 1 | 0 |
+
+Die Aufgaben mit eigenen Ideen geben Titel, Bilder und Thesen vor, etwa einen Vortragstitel mit Wortspiel. In ihnen entstehen die meisten Muster, weil das Modell ein vorgegebenes Bild gern über den ganzen Text weiterführt. Diese Aufgaben enthalten unveröffentlichte Entwürfe und liegen deshalb nicht im Repository.
+

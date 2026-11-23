@@ -61,6 +61,16 @@ Für Deutsch gibt es keine Korpusstudie, nur Journalismus und Anbieter-Blogs. Di
 
 Quellen: https://www.giga.de/artikel/mit-diesen-floskeln-lassen-sich-chatgpt-ki-texte-erkennen/ (223 Floskeln, unbelegt), https://t3n.de/news/ki-texte-erkennen-5-anzeichen-die-dir-verraten-ob-ein-chatbot-am-werk-war-1745388/, https://www.strato.de/homepage-baukasten/ki-texte-erkennen/, https://www.pangram.com/de/blog/walking-through-ai-phrases, https://coachway.io/de/chatgpt-texte-menschlich-umschreiben/
 
+### Englische Texte
+
+Für englische Texte hat `RULES.md` einen eigenen Abschnitt. Vorher galt dort nur der allgemeine Satz, die entsprechenden englischen Muster ebenso zu meiden. In Tests schrieb Claude englische Texte dann mit durchgezogenen Bildern, gespiegelten Satzpaaren, Pointen am Absatzende, einer Frage an die Leser am Ende von Beiträgen und Wendungen, die aus dem Deutschen übertragen sind.
+
+Die Muster stammen aus drei offenen Sammlungen. Die Wikipedia-Seite des WikiProject AI Cleanup ist die umfangreichste. Daraus kommen die typischen Wörter, „serves as“ statt „is“, die angehängten Satzteile mit „-ing“, die Aufwertungen und die unbestimmten Quellen. stop-slop liefert die Ankündigungen, die Nachdruck-Formeln, den Jargon und die Regel gegen viele kurze Sätze hintereinander. no-ai-slop liefert die scheinbaren Enthüllungen, die wechselnden Bezeichnungen und die Pointe am Schluss. Übernommen sind nur Muster und einzelne Beispielwörter, keine Texte. Die Zeilen zu Übertragungen aus dem Deutschen und zur Frage an die Leser stammen aus den eigenen Tests.
+
+Ein erster Versuch hat die neuen Muster als reine Verbote in die deutsche Tabelle geschrieben und für alle Sprachen gelten lassen. Die Texte wurden davon flacher und verloren im blinden Vergleich deutlich gegen die alte Fassung. Der eigene Abschnitt gibt deshalb zu jedem Muster einen Ersatz vor, der den Gedanken erhält.
+
+Quellen: https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing (CC BY-SA 4.0), https://github.com/hardikpandya/stop-slop (MIT), https://github.com/petergyang/no-ai-slop (MIT)
+
 ## 4. Code
 
 Muster mit breitem Konsens (fünf und mehr unabhängige Quellen, darunter Claude Codes eigener Systemprompt):
