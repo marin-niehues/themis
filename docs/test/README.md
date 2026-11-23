@@ -24,7 +24,7 @@ Zwischen den Durchläufen wurde `RULES.md` geändert. Jede Aufgabe lief einmal p
 
 ## Gegenproben mit frischen Aufgaben
 
-Nach fünf Durchläufen mit denselben 100 Aufgaben bestand die Gefahr, dass die Regeln nur noch auf diese Aufgaben passen. Deshalb gab es zwei Gegenproben mit jeweils 100 neuen Aufgaben aus anderen Branchen. Beide Testsätze enthalten absichtlich eingebaute Fehler wie falsche Wochentage, Rechnungen, die nicht aufgehen, und heikle Bitten.
+Nach fünf Durchläufen mit denselben 100 Aufgaben bestand die Gefahr, dass die Regeln nur noch auf diese Aufgaben passen. Deshalb gab es zwei Gegenproben mit jeweils 100 neuen Aufgaben aus anderen Branchen. Beide Testsätze enthalten absichtlich eingebaute Fehler wie falsche Wochentage, falsche Rechnungen und heikle Bitten.
 
 | Urteil über 100 Aufgaben | Gegentest (`gegentest`) | Testsatz 3 (`testsatz-3`) |
 |---|---|---|
