@@ -68,3 +68,7 @@ Auf Deutsch lag die erweiterte Fassung mit 13 Aufgaben aus `testsatz-3/aufgaben-
 
 Ein Versuch legte die deutsche und die englische Tabelle zu einer Tabelle zusammen und entfernte doppelte Regeln. Die Datei wurde dadurch um 13 Prozent kürzer, ohne dass ein Beispiel fehlte. Im blinden Vergleich gegen die Fassung mit zwei Tabellen verlor sie auf Englisch 2 zu 13 bei 3 Unentschieden. Auf Deutsch lag sie bei 4 zu 4 bei 5 Unentschieden, übernahm aber in einer Mahnung einen falschen Betrag aus der Aufgabe. Der Versuch wurde verworfen. Die eigene englische Tabelle bleibt deshalb bestehen, weil die Regeln nur mit ihr auf englische Texte wirken.
 
+### Englisch mit und ohne themis
+
+Dieselben 18 englischen Aufgaben liefen auch ohne Regeln. Bei den 12 sachlichen Aufgaben war die Fassung mit themis in 6 Aufgaben besser und in 6 schlechter. Bei den 6 Aufgaben mit eigenen Ideen des Autors bevorzugte der Prüfer in 5 Aufgaben die Fassung ohne themis. Er hielt die rhetorischen Mittel dort für wirksam, etwa Pointen und ein durchgezogenes Bild in einer Keynote. Genau diese Mittel entfernt themis. Auf Englisch entfernt themis die Muster also, ohne dass die Texte im Urteil eines Lektors insgesamt besser werden.
+
