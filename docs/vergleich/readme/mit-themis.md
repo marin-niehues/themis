@@ -1,12 +1,10 @@
 ## R1
 
-Der Health-Check ist nach dem Start dreimal mit Zeitüberschreitung fehlgeschlagen, weil in der Produktionsumgebung die Umgebungsvariable `DATABASE_URL` fehlt. Der Build selbst ist durchgelaufen. Geändert habe ich noch nichts.
+Das Deployment ist am Health-Check gescheitert, weil in der Produktionsumgebung die neue Umgebungsvariable `DATABASE_URL` fehlt. Ohne sie wartet der Dienst beim Start 30 Sekunden auf die Datenbank und bricht dann ab. Der Health-Check ist deshalb dreimal mit Zeitüberschreitung fehlgeschlagen. Der Build selbst ist durchgelaufen.
 
-Ohne `DATABASE_URL` wartet der Dienst beim Start 30 Sekunden auf die Datenbank und bricht dann ab. Die Variable ist mit dieser Version neu hinzugekommen und bisher nur in Staging gesetzt.
+In Staging ist `DATABASE_URL` gesetzt, deshalb ist der Fehler dort nicht aufgetreten. Ich habe noch nichts geändert. Ob die vorige Version in Produktion noch läuft, habe ich nicht geprüft.
 
-Wenn du `DATABASE_URL` in der Produktionsumgebung setzt und das Deployment neu startest, sollte der Health-Check durchgehen. Nimm dafür die Verbindungsdaten der Produktionsdatenbank, weil der Dienst mit dem Wert aus Staging auf die Staging-Datenbank zugreifen würde. Ob in Produktion gerade noch die vorige Version läuft, hängt davon ab, ob eure Pipeline nach einem fehlgeschlagenen Health-Check zurückrollt. Das habe ich nicht geprüft.
-
-Soll ich nachsehen, welche Version in Produktion läuft, und die Variable nach deinem Okay setzen?
+Damit das nächste Deployment durchgeht, muss `DATABASE_URL` in Produktion gesetzt sein. Dafür brauchst du den Verbindungsstring der Produktionsdatenbank. Der Wert aus Staging zeigt auf die Staging-Datenbank und passt deshalb nicht. Soll ich die Variable setzen und das Deployment neu starten, sobald du mir den Wert gibst?
 
 ## R2
 
@@ -14,47 +12,64 @@ Betreff: Ihre Espressobohnen kommen erst am Dienstag
 
 Liebe Frau Brandt,
 
-Ihre Bestellung über 10 kg Espressobohnen kann ich Ihnen leider erst am Dienstag liefern. Zugesagt hatten wir Ihnen den Freitag. Unsere Röstmaschine muss repariert werden. Bis sie wieder läuft, können wir nicht rösten.
+leider kommen Ihre bestellten 10 kg Espressobohnen erst am Dienstag und damit später als zugesagt. Geplant war die Lieferung für Freitag. Unsere Röstmaschine muss repariert werden. Bis die Reparatur abgeschlossen ist, können wir nicht rösten.
 
-Es tut mir leid, dass Sie dadurch über das Wochenende ohne die neue Lieferung auskommen müssen. Als Ausgleich lege ich Ihnen 1 kg Filterkaffee kostenlos dazu.
+Es tut mir leid, dass Sie dadurch länger warten müssen. Als Ausgleich legen wir der Lieferung 1 kg Filterkaffee kostenlos bei.
 
-Wenn Ihr Vorrat bis Dienstag knapp wird, geben Sie mir bitte Bescheid. Ich schaue dann, was ich kurzfristig für Sie tun kann.
+Falls Ihr Vorrat nicht bis Dienstag reicht, rufen Sie mich bitte an oder antworten Sie auf diese E-Mail. Dann suchen wir gemeinsam eine Lösung.
 
-Viele Grüße
+Vielen Dank für Ihr Verständnis.
+
+Herzliche Grüße
 Paul Engel
 Rösterei Kornfeld
 
 ## R3
 
-If your AI pilot has been stuck for months, find out who owns the data it needs.
+If your AI pilot has stalled, check who owns the data it needs.
 
-In three of the last five companies I worked with, the answer was no one, and that is why their pilots stalled. Without an owner, every question about the data ends up in a meeting. Who can grant access? Which version of the customer list is correct? Who fixes a wrong entry at the source? The pilot waits while these questions move between departments.
+In three of the last five companies I worked with, that was the reason. The pilot depended on data that belonged to no one in particular. Nobody could grant access or take responsibility for its quality, so the team waited for decisions that were nobody's job.
 
-Before you start the next pilot, name one person who is responsible for the data it depends on. That person needs the authority to decide on access and quality and the time to do it. A department or a steering committee can't fill that role, because decisions there wait for the next meeting.
+Before a pilot starts, I now ask one question: who owns the data this depends on? If the answer is a department or an awkward silence, the first task is to name one person who decides on access and quality. That person belongs in the kickoff meeting, next to whoever owns the budget.
+
+Who owns the data behind your AI projects?
+
+#AI #DataGovernance #Consulting
 
 ## R4
 
 ```
-Write CSV export as UTF-8 to handle emoji in customer names
+Write CSV export as UTF-8 to handle emoji in names
 
-The export crashed with a UnicodeEncodeError when a customer name
-contained an emoji, because the file was opened with the system
-default encoding. Open the export file with encoding="utf-8" and add
-a test that exports a customer whose name contains an emoji.
+The export opened the file with the system default encoding. When a
+customer name contained an emoji that this encoding cannot represent,
+the export crashed with UnicodeEncodeError.
+
+Open the file with encoding="utf-8" and add a test that exports a
+customer with an emoji in the name.
+
+On systems whose default encoding was not UTF-8, the output encoding
+changes with this commit. Excel on Windows reads CSV files without a
+BOM in the local ANSI code page, so non-ASCII characters may display
+incorrectly there.
 ```
 
 ## R5
 
-Überschrift: Noch keine gespeicherten Berichte
+Überschrift: Noch keine Berichte gespeichert
 
-Text: Hier finden Sie die Berichte, die Sie gespeichert haben. Öffnen Sie dazu einen Bericht und klicken Sie in der Berichtsansicht auf „Speichern“.
+Text: Klicken Sie in der Berichtsansicht auf „Speichern“, dann erscheint der Bericht in dieser Liste. Von hier aus können Sie ihn jederzeit wieder öffnen.
 
-Schaltfläche: Berichte anzeigen
+Schaltfläche: Berichtsansicht öffnen
 
 ## R6
 
-Hi everyone,
+Hi,
 
-This month is about on-call and what comes after an incident. I interviewed an engineering manager about how they run on-call rotations for their team, and you'll find the conversation below. After that comes a template for incident reviews that you can copy and use for your next review. The issue ends with three links for further reading.
+On-call rotations decide who gets paged at night and how often. This month I spoke with an engineering manager about how their team runs on-call. The full interview is the main piece of this issue.
 
-Thanks for reading. If a colleague is setting up an on-call rotation right now, feel free to forward this issue.
+You'll also find a template for incident reviews. Copy it into your own docs and adapt the sections to your team before the next incident.
+
+At the end there are three links I recommend this month.
+
+Thanks for reading. If you'd like to share how your team handles on-call, reply to this email.

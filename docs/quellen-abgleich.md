@@ -1,5 +1,7 @@
 # Abgleich der Schreibmuster mit RULES.md
 
+Diese Zuordnung beschreibt eine Fassung von RULES.md, die am 24. November 2026 zurückgenommen wurde. Sie bleibt als Grundlage für spätere Änderungen erhalten. Die Fundstellen in der letzten Spalte gelten für die heutige RULES.md nicht mehr.
+
 Die Tabelle ordnet 150 Muster typischer KI-Texte aus drei Quellen den Stellen in RULES.md zu, die sie behandeln. Die Quellen wurden am 23. November 2026 gelesen. Die letzte Spalte gibt RULES.md im Stand vom selben Tag wieder. Die Wikipedia-Seite verweist für Stil und Auszeichnung auf eigene Unterseiten. Diese Unterseiten sind nicht Teil des Abgleichs.
 
 Die Spalte „Quellen“ verwendet diese Kürzel:

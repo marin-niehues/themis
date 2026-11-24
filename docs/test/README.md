@@ -72,3 +72,7 @@ Ein Versuch legte die deutsche und die englische Tabelle zu einer Tabelle zusamm
 
 Dieselben 18 englischen Aufgaben liefen auch ohne Regeln. Bei den 12 sachlichen Aufgaben war die Fassung mit themis in 6 Aufgaben besser und in 6 schlechter. Bei den 6 Aufgaben mit eigenen Ideen des Autors bevorzugte der Prüfer in 5 Aufgaben die Fassung ohne themis. Er hielt die rhetorischen Mittel dort für wirksam, etwa Pointen und ein durchgezogenes Bild in einer Keynote. Genau diese Mittel entfernt themis. Auf Englisch entfernt themis die Muster also, ohne dass die Texte im Urteil eines Lektors insgesamt besser werden.
 
+### Rücknahme
+
+Am 24. November 2026 wurde `RULES.md` auf die rein deutsche Fassung zurückgesetzt. Übernommen blieb nur die Änderung, dass allgemeine Aussagen dort einen Beleg brauchen, wo der Leser einen erwartet. Ausschlaggebend war ein Urteil des Repository-Inhabers: Die englischen Texte wirkten mit und ohne Regeln gleichermaßen generiert. Die Prüfung durch ein Sprachmodell hatte rhetorische Muster außerdem eher belohnt.
+

@@ -75,6 +75,8 @@ In einem zweiten Schritt wurden alle drei Quellen vollständig gelesen und Muste
 
 Der erste Einbau machte englische Texte dünner und kühler. Ein Test in Teilen zeigte, dass die erweiterte englische Tabelle daran nicht beteiligt war. Verantwortlich waren vier Sätze außerhalb der Tabellen: ein fester erster Satz nach der Anrede, ein Verbot, Selbstverständliches zu erklären, strenge Regeln für Fettdruck und Überschriften sowie ein Übertragbarkeitstest, der zum Erfinden von Details einlud. Diese Sätze wurden so umformuliert, dass das Anliegen der Quelle erhalten bleibt.
 
+Am 24. November 2026 wurden der englische Abschnitt und der vollständige Abgleich wieder zurückgenommen. `RULES.md` gilt seitdem wieder für deutsche Texte. In einem blinden Vergleich mit Claude ohne Regeln brachte der englische Teil keinen Vorsprung. Die englischen Texte wirkten auch mit Regeln noch generiert. Die Beschreibung oben bleibt als Herleitung stehen.
+
 ## 4. Code
 
 Muster mit breitem Konsens (fünf und mehr unabhängige Quellen, darunter Claude Codes eigener Systemprompt):
