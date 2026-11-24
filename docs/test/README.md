@@ -64,3 +64,7 @@ Nach dem vollständigen Abgleich mit den drei Quellen lief die erweiterte Fassun
 
 Auf Deutsch lag die erweiterte Fassung mit 13 Aufgaben aus `testsatz-3/aufgaben-m1.md` bei 6 zu 4, drei Aufgaben waren gleich. Beide Fassungen fanden die eingebauten Fehler. Die Endfassung liegt auf Englisch im Rahmen der Schwankung zwischen zwei Läufen und deckt dafür alle Muster der Quellen ab.
 
+### Gestraffte Fassung
+
+Ein Versuch legte die deutsche und die englische Tabelle zu einer Tabelle zusammen und entfernte doppelte Regeln. Die Datei wurde dadurch um 13 Prozent kürzer, ohne dass ein Beispiel fehlte. Im blinden Vergleich gegen die Fassung mit zwei Tabellen verlor sie auf Englisch 2 zu 13 bei 3 Unentschieden. Auf Deutsch lag sie bei 4 zu 4 bei 5 Unentschieden, übernahm aber in einer Mahnung einen falschen Betrag aus der Aufgabe. Der Versuch wurde verworfen. Die eigene englische Tabelle bleibt deshalb bestehen, weil die Regeln nur mit ihr auf englische Texte wirken.
+
